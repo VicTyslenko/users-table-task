@@ -5,7 +5,6 @@ import { NewContact } from "../new-contact/new-contact";
 import { useState } from "react";
 import { AddContactIcon } from "../../../../../assets/icons/add-contact";
 import { DefaultButton } from "../../../../../shared/button/default-button";
-
 export const ContactsHeader = () => {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -18,7 +17,7 @@ export const ContactsHeader = () => {
       <DefaultButton className="add-button" onClick={() => setOpen(true)}>
         <AddContactIcon /> Add
       </DefaultButton>
-
+      <DefaultButton> Delete</DefaultButton>
       {open && <Modal isOpen={open} children={<NewContact onClose={handleClose} />} onClose={handleClose} />}
     </S.HeaderWrapper>
   );

@@ -1,6 +1,8 @@
 import * as S from "./styles";
 import { DefaultButton } from "../../../../../shared/button/default-button";
 import { DefaultTextField } from "../../../../../shared/default-text-field";
+import { instance } from "../../../../../services/api/axios";
+import toast from "react-hot-toast";
 import { defaultValues } from "./data";
 import { type Props, FormProps } from "./models";
 import { useForm } from "react-hook-form";
@@ -11,7 +13,24 @@ export const NewContact = ({ onClose }: Props) => {
     defaultValues,
   });
 
-  const handleFormSubmit = (values: FormProps) => {};
+  const handleFormSubmit = async (values: FormProps) => {
+    console.log(values);
+
+    const { firstName, lastName, email, phoneNumber } = values;
+    const displayName = `${firstName} ${lastName}`;
+
+    try {
+      const result = await instance.post("users/create-user", {
+        DisplayName: displayName,
+        Email: email,
+        MFA_Mobile: phoneNumber,
+      });
+      toast.success("New contact successfully added!");
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <S.Wrapper>
