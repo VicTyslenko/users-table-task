@@ -24,7 +24,7 @@ export const renderColumns = (): ColumnDef<ContactsProps>[] => [
     accessorKey: "AdminUser",
     header: "Role",
     cell: (info) => {
-      const role = info.row.original.AdminUser;
+      const role = info.row.original.IsOSPAdmin;
 
       return role ? "Admin" : "User";
     },
@@ -44,6 +44,10 @@ export const renderColumns = (): ColumnDef<ContactsProps>[] => [
   {
     header: "Edit",
     accessorKey: "edit",
-    cell: () => <EditButton />,
+    cell: (info) => {
+      const formValues = info.row.original;
+
+      return <EditButton values={formValues} />;
+    },
   },
 ];

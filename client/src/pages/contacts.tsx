@@ -9,7 +9,7 @@ export const Contacts = () => {
   const [searchContactValue, setSearchContactValue] = useState("");
 
   const { data } = useContacts(searchContactValue);
-
+console.log(data)
   const handleSearch = (value: string) => {
     setSearchContactValue(value);
   };

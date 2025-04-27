@@ -9,6 +9,7 @@ import { type Props, FormProps } from "./models";
 import { useForm } from "react-hook-form";
 import { addUserSchema } from "../../../../../shared/schemas/validate-schema";
 import { ButtonsGroup } from "../../../../../shared/button-group/button-group";
+import { CloseIcon } from "../../../../../assets/icons/close-icon";
 
 export const NewContact = ({ onClose }: Props) => {
   const { register, handleSubmit, watch, formState } = useForm<FormProps>({
@@ -42,10 +43,10 @@ export const NewContact = ({ onClose }: Props) => {
       <S.Form onSubmit={handleSubmit(handleFormSubmit)}>
         <S.Content>
           <S.HeaderWrapp>
-            <S.Header>New Contact</S.Header>
+            <S.Header>New user</S.Header>
 
             <DefaultButton onClick={onClose} variant="transparent">
-              X
+              <CloseIcon />
             </DefaultButton>
           </S.HeaderWrapp>
 
