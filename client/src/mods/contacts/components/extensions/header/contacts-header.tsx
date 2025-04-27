@@ -16,10 +16,11 @@ export const ContactsHeader = ({ searchValue, handleSearch }: HeaderProps) => {
 
   return (
     <S.HeaderWrapper>
-      <DefaultButton className="add-button" onClick={() => setOpen(true)}>
+      <DefaultButton onClick={() => setOpen(true)}>
         <AddContactIcon /> Add
       </DefaultButton>
       <DefaultTextField
+        withIcon
         placeholder="search contacts"
         className="header-input"
         onChange={(event) => handleSearch(event.target.value)}

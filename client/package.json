@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
     "@tanstack/react-table": "^8.21.3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -18,7 +19,8 @@
     "react-scripts": "5.0.1",
     "styled-components": "^6.1.17",
     "typescript": "^5.8.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zod": "^3.24.3"
   },
   "scripts": {
     "start": "react-scripts start",

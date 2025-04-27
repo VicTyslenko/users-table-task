@@ -14,6 +14,6 @@ export const HeaderWrapper = styled.div`
     cursor: pointer;
   }
   & .header-input {
-    max-width: 250px;
+    min-width: 250px;
   }
 `;

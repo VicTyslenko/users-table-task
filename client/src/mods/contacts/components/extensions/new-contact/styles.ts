@@ -50,3 +50,9 @@ export const Header = styled.h1`
 `;
 
 export const Label = styled.span``;
+
+export const ErrorMessage = styled.p`
+  font-weight: 400;
+  font-size: 12px;
+  color: red;
+`;
