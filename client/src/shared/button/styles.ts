@@ -41,6 +41,13 @@ export const Button = styled.button<ButtonProps>`
           width: auto;
           height: auto;
         `;
+      case "danger":
+        return css`
+          color: #fff;
+          border: 1px solid #dedfe0;
+          background-color: #ff5147;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+        `;
 
       default:
         return css`

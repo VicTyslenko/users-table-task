@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Message = styled.p`
-  font-size: 18px;
+  font-size: 17px;
 `;
 
 export const MessageWrapp = styled.div`

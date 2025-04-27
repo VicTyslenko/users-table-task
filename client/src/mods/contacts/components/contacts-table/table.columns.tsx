@@ -4,6 +4,7 @@ import { Name } from "../extensions/name";
 import { LockedIcon } from "../../../../assets/icons/locked-icon";
 import type { ContactsProps } from "../../../../shared/models";
 import { UnlockedIcon } from "../../../../assets/icons/unlocked-icon";
+import { DeleteButton } from "../extensions/delete-button/delete-button";
 export const renderColumns = (): ColumnDef<ContactsProps>[] => [
   {
     accessorKey: "DisplayName",
@@ -48,6 +49,16 @@ export const renderColumns = (): ColumnDef<ContactsProps>[] => [
       const formValues = info.row.original;
 
       return <EditButton values={formValues} />;
+    },
+  },
+
+  {
+    header: "Delete user",
+    accessorKey: "delete",
+    cell: (info) => {
+      const id = info.row.original.UserID;
+
+      return <DeleteButton id={id} />;
     },
   },
 ];

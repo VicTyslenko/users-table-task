@@ -49,3 +49,9 @@ exports.deleteUser = async (req, res) => {
     res.status(500).send("Failed to delete user.");
   }
 };
+
+exports.editUser = async (req, res) => {
+  const id = req.params.id;
+
+  
+};
