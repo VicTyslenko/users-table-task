@@ -1,6 +1,7 @@
 import * as S from "./styles";
 import { DefaultButton } from "../../../../../shared/button";
 import { InfoIcon } from "../../../../../assets/icons/info-icon";
+import { DangerIcon } from "../../../../../assets/icons/danger-icon";
 
 type Props = {
   onClose: () => void;
