@@ -26,6 +26,7 @@ export const NewContact = ({ onClose }: Props) => {
         MFA_Mobile: phoneNumber,
       });
       toast.success("New contact successfully added!");
+      onClose();
       console.log(result);
     } catch (error) {
       console.error(error);

@@ -2,9 +2,9 @@ import { EditButton } from "../../../../assets/icons";
 import { ColumnDef } from "@tanstack/react-table";
 import { Name } from "../extensions/name";
 
-import type { Contacts } from "../../../../shared/models";
+import type { ContactsProps } from "../../../../shared/models";
 
-export const renderColumns = (): ColumnDef<Contacts>[] => [
+export const renderColumns = (): ColumnDef<ContactsProps>[] => [
   {
     accessorKey: "DisplayName",
     header: "Name",

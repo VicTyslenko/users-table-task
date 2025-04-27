@@ -1,4 +1,4 @@
-export type Contacts = {
+export type ContactsProps = {
   UserID: number;
   DisplayName: string;
   Email: string;

@@ -1,31 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
 import { useReactTable, getCoreRowModel, flexRender } from "@tanstack/react-table";
-import type { Contacts } from "../../../../shared/models";
-import { instance } from "../../../../services/api/axios";
+import type { ContactsProps } from "../../../../shared/models";
 import * as S from "./styles";
 import { renderColumns } from "./table.columns";
 
-export const UsersTable = () => {
-  const [data, setData] = useState<Contacts[]>([]);
+type UsersTableProps = {
+  data: ContactsProps[];
+};
 
-  useEffect(() => {
-    try {
-      const test = async () => {
-        const res = await instance.get("/users");
-
-        const data = res.data;
-        setData(data);
-      };
-
-      test();
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
-  useEffect(() => {
-    console.log("data", data);
-  }, [data]);
-
+export const UsersTable = ({ data }: UsersTableProps) => {
   const table = useReactTable({
     data,
     columns: renderColumns(),

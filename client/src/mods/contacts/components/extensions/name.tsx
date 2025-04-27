@@ -1,12 +1,12 @@
 import * as S from "./styles";
-import type { Contacts } from "../../../../shared/models";
+import type { ContactsProps } from "../../../../shared/models";
 import { StatusActive } from "../../../../assets/icons";
 import { StatusInactive } from "../../../../assets/icons";
 import { TestingStatus } from "../../../../assets/icons";
 import { Statuses } from "./models";
 
 type Props = {
-  contact: Contacts;
+  contact: ContactsProps;
 };
 
 export const Name = ({ contact }: Props) => {

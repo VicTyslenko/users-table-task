@@ -8,9 +8,12 @@ export const HeaderWrapper = styled.div`
   width: 100%;
   height: 36px;
 
-  .add-button {
+  & .add-button {
     min-width: 36px;
     height: 36px;
     cursor: pointer;
+  }
+  & .header-input {
+    max-width: 250px;
   }
 `;
