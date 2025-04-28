@@ -6,19 +6,19 @@ export const useContacts = (searchValue: string) => {
   const [data, setData] = useState<ContactsProps[]>([]);
   const [filteredUsers, setFilteredUsers] = useState<ContactsProps[]>([]);
 
-  useEffect(() => {
+  const fetchUsersData = async () => {
     try {
-      const fetchUsersData = async () => {
-        const res = await instance.get("/users");
+      const res = await instance.get("/users");
+      const data = res.data as ContactsProps[];
 
-        const data = res.data as ContactsProps[];
-
-        setData(data);
-      };
-      fetchUsersData();
+      setData(data);
     } catch (error) {
       console.error(error);
     }
+  };
+
+  useEffect(() => {
+    fetchUsersData();
   }, []);
 
   useEffect(() => {
@@ -28,5 +28,5 @@ export const useContacts = (searchValue: string) => {
     setFilteredUsers(filteredData);
   }, [data, searchValue]);
 
-  return { data: filteredUsers };
+  return { data: filteredUsers, refetch: fetchUsersData };
 };

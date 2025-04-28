@@ -2,13 +2,15 @@ import { EditIcon } from "../../../../../assets/icons";
 import { DefaultButton } from "../../../../../shared/button";
 import { Modal } from "../../../../../shared/modal";
 import { EditContact } from "../edit-contact/edit-contact";
-import type { ContactsProps } from "../../../../../shared/models";
+import type { EditFormProps } from "../../../../../shared/models";
 import { AccessWarning } from "../access-warning-modal/access-warning-modal";
+
 import { useState } from "react";
 
 type Props = {
-  values: ContactsProps;
+  values: EditFormProps;
 };
+
 export const EditButton = ({ values }: Props) => {
   const role = values.IsOSPAdmin;
 
@@ -26,7 +28,6 @@ export const EditButton = ({ values }: Props) => {
         variant="transparent"
         onClick={() => {
           setOpen(true);
-          console.log(values);
         }}
       >
         <EditIcon />

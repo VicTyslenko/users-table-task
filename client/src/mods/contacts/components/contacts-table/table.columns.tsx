@@ -1,9 +1,11 @@
 import { EditButton } from "../extensions/edit-button/edit-button";
 import { ColumnDef } from "@tanstack/react-table";
 import { Name } from "../extensions/name";
-import { LockedIcon } from "../../../../assets/icons/locked-icon";
+import { AccessCell } from "../extensions/access-cell/access-cell";
 import type { ContactsProps } from "../../../../shared/models";
-import { UnlockedIcon } from "../../../../assets/icons/unlocked-icon";
+
+import { AccessIcon } from "../../../../assets/icons/access-icon";
+import { BlockedIcon } from "../../../../assets/icons/blocked-icon";
 import { DeleteButton } from "../extensions/delete-button/delete-button";
 export const renderColumns = (): ColumnDef<ContactsProps>[] => [
   {
@@ -36,9 +38,8 @@ export const renderColumns = (): ColumnDef<ContactsProps>[] => [
     header: "Access",
     cell: (info) => {
       const access = info.row.original.BlockAccess;
-      if (!access) return;
 
-      return <LockedIcon />;
+      return AccessCell(access);
     },
   },
 
@@ -46,7 +47,7 @@ export const renderColumns = (): ColumnDef<ContactsProps>[] => [
     header: "Edit",
     accessorKey: "edit",
     cell: (info) => {
-      const formValues = info.row.original;
+      const { Status, FunctionalUser, AdminUser, ColourMode, HierarchyMaintenance, ...formValues } = info.row.original;
 
       return <EditButton values={formValues} />;
     },

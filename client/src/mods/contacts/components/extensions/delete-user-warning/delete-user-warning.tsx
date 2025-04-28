@@ -1,22 +1,27 @@
-import { instance } from "../../../../../services/api/axios";
 import { DefaultButton } from "../../../../../shared/button";
 import { DangerIcon } from "../../../../../assets/icons/danger-icon";
 import { ButtonsGroup } from "../../../../../shared/button-group/button-group";
 import * as S from "./styles";
-
+import { useUsersContext } from "../../../../../shared/hooks";
+import { fetchDeleteUser } from "../../../../../services/api/fetchDeleteUser";
+import toast from "react-hot-toast";
 type Props = {
   userId: number;
   closeModal: () => void;
 };
 
 export const DeleteUserWarning = ({ userId, closeModal }: Props) => {
+  const { refetch } = useUsersContext();
+
   const handleDeleteUser = async () => {
     try {
-      // const result = await instance.delete(`/users/${userId}`);
+      await fetchDeleteUser(userId);
 
-      // console.log(result);
+      refetch();
+
+      toast.success("User has been deleted!");
+
       closeModal();
-      console.log(userId);
     } catch (error) {
       console.error(error);
     }
@@ -31,8 +36,12 @@ export const DeleteUserWarning = ({ userId, closeModal }: Props) => {
       <S.Desription>Are you sure you want to delete this user?</S.Desription>
 
       <ButtonsGroup>
-        <DefaultButton variant="secondary" onClick={closeModal}>Cancel</DefaultButton>
-        <DefaultButton  onClick={handleDeleteUser}>Yes</DefaultButton>
+        <DefaultButton variant="secondary" onClick={closeModal}>
+          Cancel
+        </DefaultButton>
+        <DefaultButton variant="danger" onClick={handleDeleteUser}>
+          Delete
+        </DefaultButton>
       </ButtonsGroup>
     </S.Wrapper>
   );

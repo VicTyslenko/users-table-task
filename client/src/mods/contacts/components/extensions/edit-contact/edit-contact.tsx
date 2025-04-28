@@ -2,13 +2,20 @@ import * as S from "../new-contact/styles";
 
 import { DefaultTextField } from "../../../../../shared/default-text-field";
 import { DefaultButton } from "../../../../../shared/button";
-import type { Props } from "./models";
+import { fetchEditUser } from "../../../../../services/api/fetchEditUser";
 import { useForm } from "react-hook-form";
 import { CloseIcon } from "../../../../../assets/icons/close-icon";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { editUserSchema } from "../../../../../shared/schemas/validate-schema";
-import type { EditFormProps } from "./models";
+import toast from "react-hot-toast";
+import type { EditFormProps } from "../../../../../shared/models";
+import { useUsersContext } from "../../../../../shared/hooks";
 import { ButtonsGroup } from "../../../../../shared/button-group/button-group";
+
+type Props = {
+  onClose: () => void;
+  values: EditFormProps;
+};
 
 export const EditContact = ({ onClose, values }: Props) => {
   const { register, handleSubmit, watch, formState } = useForm<EditFormProps>({
@@ -17,9 +24,26 @@ export const EditContact = ({ onClose, values }: Props) => {
   });
 
   const { errors } = formState;
+
+  const { refetch } = useUsersContext();
+
+  const handleFormSubmit = async (newValues: EditFormProps) => {
+    try {
+      const id = values.UserID;
+
+      await fetchEditUser(id, newValues);
+
+      refetch();
+
+      toast.success("User updated successfully!");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <S.Wrapper>
-      <S.Form>
+      <S.Form onSubmit={handleSubmit(handleFormSubmit)}>
         <S.Content>
           <S.HeaderWrapp>
             <S.Header>Edit user</S.Header>
@@ -44,6 +68,10 @@ export const EditContact = ({ onClose, values }: Props) => {
           <S.Label>Block Access</S.Label>
           <DefaultTextField type="number" placeholder="Set block access" {...register("BlockAccess", { valueAsNumber: true })} />
           {errors.BlockAccess && <S.ErrorMessage>{errors.BlockAccess.message}</S.ErrorMessage>}
+
+          <S.Label>Is admin</S.Label>
+
+          <DefaultTextField type="checkbox" {...register("IsOSPAdmin")} defaultChecked={values.IsOSPAdmin} />
 
           <S.Label>O365 Email</S.Label>
           <DefaultTextField placeholder="Type O365 email (optional)" {...register("O365Email")} />

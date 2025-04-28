@@ -1,0 +1,8 @@
+import { instance } from "./axios";
+
+type ParamsProps = {
+  DisplayName: string;
+  Email: string;
+  MFA_Mobile: string;
+};
+export const fetchAddUser = (params: ParamsProps) => instance.post("/users/create-user", params);

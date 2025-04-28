@@ -6,33 +6,36 @@ import toast from "react-hot-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { defaultValues } from "./data";
 import { type Props, FormProps } from "./models";
+import { fetchAddUser } from "../../../../../services/api/fetchAddUser";
 import { useForm } from "react-hook-form";
 import { addUserSchema } from "../../../../../shared/schemas/validate-schema";
 import { ButtonsGroup } from "../../../../../shared/button-group/button-group";
 import { CloseIcon } from "../../../../../assets/icons/close-icon";
+import { useUsersContext } from "../../../../../shared/hooks";
 
 export const NewContact = ({ onClose }: Props) => {
   const { register, handleSubmit, watch, formState } = useForm<FormProps>({
     defaultValues,
     resolver: zodResolver(addUserSchema),
   });
+  const { refetch } = useUsersContext();
   const { errors } = formState;
 
   const handleFormSubmit = async (values: FormProps) => {
-    console.log(values);
-
     const { firstName, lastName, email, phoneNumber } = values;
     const displayName = `${firstName} ${lastName}`;
 
     try {
-      const result = await instance.post("users/create-user", {
+      await fetchAddUser({
         DisplayName: displayName,
         Email: email,
         MFA_Mobile: phoneNumber,
       });
+
+      refetch();
+
       toast.success("New contact successfully added!");
       onClose();
-      console.log(result);
     } catch (error) {
       console.error(error);
     }

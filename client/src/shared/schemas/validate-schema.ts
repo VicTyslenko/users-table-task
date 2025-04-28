@@ -14,4 +14,5 @@ export const editUserSchema = z.object({
   BlockAccess: z.number().min(0),
   O365Email: z.string().email().optional(),
   MFA_Mobile: z.string().min(11).trim(),
+  UserID: z.number(),
 });

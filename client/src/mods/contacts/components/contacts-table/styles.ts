@@ -7,16 +7,17 @@ export const TableWrapper = styled.div`
   width: 100%;
   background-color: #fff;
   border-radius: 16px;
-padding: 10px;
+  padding: 10px;
   background: #fff;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  height: auto;
+  /* max-height: 620px;
+  overflow: auto; */
 `;
 
 export const Table = styled.table`
   /* display: grid;
-  width: 100%; */
-  /* min-width: 768px;
+  width: 100%;
+  min-width: 768px;
   border-collapse: collapse;
   border-spacing: 0;
   table-layout: fixed; */
