@@ -4,13 +4,16 @@ const config = require("../config/config");
 
 // Controller for adding a new user to data base
 exports.createUser = async (req, res) => {
-  const { DisplayName, Email, MFA_Mobile } = req.body;
+  const { DisplayName, Email, MFA_Mobile, AdminUser, O365Email, BlockAccess } = req.body;
+
+  const isAdmin = AdminUser ? 1 : 0;
+  const isBlocked = BlockAccess ? 1 : 0;
 
   try {
     await sql.connect(config);
     await sql.query`
-      INSERT INTO Users (DisplayName, Email, MFA_Mobile)
-      VALUES (${DisplayName}, ${MFA_Mobile}, ${Email})
+      INSERT INTO Users (DisplayName, Email, MFA_Mobile, AdminUser, O365Email, BlockAccess)
+      VALUES (${DisplayName}, ${Email}, ${MFA_Mobile}, ${isAdmin}, ${O365Email}, ${isBlocked})
     `;
 
     res.status(201).send("User created successfully!");

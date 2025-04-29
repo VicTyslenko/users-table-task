@@ -9,7 +9,10 @@ export const AccessWarning = ({ onClose }: Props) => {
   return (
     <S.Wrapper>
       <S.MessageWrapp>
-        <InfoIcon />
+        <S.IconWrapp>
+          <InfoIcon />
+        </S.IconWrapp>
+
         <S.Message>You don't have access to edit admin</S.Message>
       </S.MessageWrapp>
 

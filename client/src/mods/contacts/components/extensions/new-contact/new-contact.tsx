@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import { DefaultButton } from "../../../../../shared/button/default-button";
 import { DefaultTextField } from "../../../../../shared/default-text-field";
-import { instance } from "../../../../../services/api/axios";
+import { ToggleSwitch } from "../../../../../shared/toggle-switch/toggle-switch";
 import toast from "react-hot-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { defaultValues } from "./data";
@@ -22,14 +22,18 @@ export const NewContact = ({ onClose }: Props) => {
   const { errors } = formState;
 
   const handleFormSubmit = async (values: FormProps) => {
-    const { firstName, lastName, email, phoneNumber } = values;
+    const { firstName, lastName, Email, MFA_Mobile, AdminUser, BlockAccess, O365Email } = values;
+
     const displayName = `${firstName} ${lastName}`;
 
     try {
       await fetchAddUser({
         DisplayName: displayName,
-        Email: email,
-        MFA_Mobile: phoneNumber,
+        Email,
+        MFA_Mobile,
+        AdminUser,
+        BlockAccess,
+        O365Email,
       });
 
       refetch();
@@ -41,34 +45,57 @@ export const NewContact = ({ onClose }: Props) => {
     }
   };
 
+  const adminUser = watch("AdminUser");
+
   return (
     <S.Wrapper>
       <S.Form onSubmit={handleSubmit(handleFormSubmit)}>
         <S.Content>
           <S.HeaderWrapp>
-            <S.Header>New user</S.Header>
+            <S.Header>Add user</S.Header>
 
             <DefaultButton onClick={onClose} variant="transparent">
               <CloseIcon />
             </DefaultButton>
           </S.HeaderWrapp>
 
+          <S.FlexWrapp>
+            <S.Label>Admin</S.Label>
+            <ToggleSwitch {...register("AdminUser")} />
+          </S.FlexWrapp>
+
           <S.Label>First name</S.Label>
           <DefaultTextField placeholder="Type first name" {...register("firstName")} />
           {errors.firstName && <S.ErrorMessage>{errors.firstName.message}</S.ErrorMessage>}
+
           <S.Label>Last name</S.Label>
           <DefaultTextField placeholder="Type last name" {...register("lastName")} />
           {errors.lastName && <S.ErrorMessage>{errors.lastName.message}</S.ErrorMessage>}
+
           <S.Label>Number</S.Label>
-          <DefaultTextField placeholder="Type a number" {...register("phoneNumber")} />
-          {errors.phoneNumber && <S.ErrorMessage>{errors.phoneNumber.message}</S.ErrorMessage>}
+          <DefaultTextField placeholder="Type a number" {...register("MFA_Mobile")} />
+          {errors.MFA_Mobile && <S.ErrorMessage>{errors.MFA_Mobile.message}</S.ErrorMessage>}
+
           <S.Label>Email</S.Label>
-          <DefaultTextField placeholder="Type email address" {...register("email")} />
-          {errors.email && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
+          <DefaultTextField placeholder="Type email address" {...register("Email")} />
+          {errors.Email && <S.ErrorMessage>{errors.Email.message}</S.ErrorMessage>}
+
+          <S.Label>Microsoft 365 Email</S.Label>
+          <DefaultTextField placeholder="Type email address" {...register("O365Email")} />
+          {errors.O365Email && <S.ErrorMessage>{errors.O365Email.message}</S.ErrorMessage>}
+
+          {!adminUser && (
+            <S.FlexWrapp>
+              <S.Label>Block user</S.Label>
+              <ToggleSwitch blocked {...register("BlockAccess")} />
+            </S.FlexWrapp>
+          )}
+
           <ButtonsGroup>
             <DefaultButton variant="secondary" onClick={onClose}>
               Cancel
             </DefaultButton>
+
             <DefaultButton type="submit">Save</DefaultButton>
           </ButtonsGroup>
         </S.Content>

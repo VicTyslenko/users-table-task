@@ -10,8 +10,8 @@ export const TableWrapper = styled.div`
   padding: 10px;
   background: #fff;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  /* max-height: 620px;
-  overflow: auto; */
+  max-height: 620px;
+  overflow: auto;
 `;
 
 export const Table = styled.table`

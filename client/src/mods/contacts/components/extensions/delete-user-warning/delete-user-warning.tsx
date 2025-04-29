@@ -5,6 +5,7 @@ import * as S from "./styles";
 import { useUsersContext } from "../../../../../shared/hooks";
 import { fetchDeleteUser } from "../../../../../services/api/fetchDeleteUser";
 import toast from "react-hot-toast";
+
 type Props = {
   userId: number;
   closeModal: () => void;

@@ -1,6 +1,8 @@
 export const defaultValues = {
   firstName: "",
   lastName: "",
-  email: "",
-  phoneNumber: "",
+  Email: "",
+  MFA_Mobile: "",
+  AdminUser: false,
+  BlockAccess: false,
 };

@@ -7,15 +7,16 @@ import * as S from "./styles";
 
 type Props = {
   id: number;
+  disabled: boolean;
 };
-export const DeleteButton = ({ id }: Props) => {
+export const DeleteButton = ({ id, disabled }: Props) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setOpen(false);
   };
   return (
     <S.Wrapper>
-      <DefaultButton onClick={() => setOpen(true)} variant="transparent">
+      <DefaultButton disabled={disabled} onClick={() => setOpen(true)} variant="transparent">
         <TrashIcon />
       </DefaultButton>
 

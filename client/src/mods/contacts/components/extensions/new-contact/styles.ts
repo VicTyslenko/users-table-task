@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   height: auto;
-  min-height: 0;
-  min-width: 400px;
+  /* min-height: 576px; */
+  min-width: 500px;
   padding: 20px;
 `;
 
@@ -55,4 +55,10 @@ export const ErrorMessage = styled.p`
   font-weight: 400;
   font-size: 12px;
   color: red;
+`;
+
+export const FlexWrapp = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;

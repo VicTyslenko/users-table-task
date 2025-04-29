@@ -5,7 +5,7 @@ import * as S from "./styles";
 export const AccessCell = (access: number) => {
   return (
     <S.Wrapper>
-      {access ? (
+      {!access ? (
         <>
           <AccessIcon />
           <span>Active</span>

@@ -69,10 +69,6 @@ export const EditContact = ({ onClose, values }: Props) => {
           <DefaultTextField type="number" placeholder="Set block access" {...register("BlockAccess", { valueAsNumber: true })} />
           {errors.BlockAccess && <S.ErrorMessage>{errors.BlockAccess.message}</S.ErrorMessage>}
 
-          <S.Label>Is admin</S.Label>
-
-          <DefaultTextField type="checkbox" {...register("IsOSPAdmin")} defaultChecked={values.IsOSPAdmin} />
-
           <S.Label>O365 Email</S.Label>
           <DefaultTextField placeholder="Type O365 email (optional)" {...register("O365Email")} />
           {errors.O365Email && <S.ErrorMessage>{errors.O365Email.message}</S.ErrorMessage>}

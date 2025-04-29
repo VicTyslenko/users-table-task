@@ -6,4 +6,5 @@ export interface Props extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   type?: HTMLButtonElement["type"];
   variant?: Variant;
+  disabled?: boolean;
 }

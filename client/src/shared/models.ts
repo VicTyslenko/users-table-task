@@ -5,7 +5,7 @@ export type ContactsProps = {
   IsOSPAdmin: boolean;
   Status: string;
   FunctionalUser: number;
-  AdminUser: number;
+  AdminUser: boolean;
   BlockAccess: number;
   O365Email?: string;
   MFA_Mobile: string;
@@ -13,4 +13,4 @@ export type ContactsProps = {
   HierarchyMaintenance: boolean;
 };
 
-export type EditFormProps = Pick<ContactsProps, "DisplayName" | "Email" | "IsOSPAdmin" | "BlockAccess" | "O365Email" | "MFA_Mobile" | "UserID">;
+export type EditFormProps = Pick<ContactsProps, "DisplayName" | "Email" | "BlockAccess" | "O365Email" | "MFA_Mobile" | "UserID" | "AdminUser">;

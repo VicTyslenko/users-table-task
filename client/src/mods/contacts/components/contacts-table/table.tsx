@@ -21,7 +21,7 @@ export const UsersTable = ({ data }: UsersTableProps) => {
           {table.getHeaderGroups().map((headerGroup) => (
             <S.TableHeadRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <S.TableHeadCell key={header.id} className="test">
+                <S.TableHeadCell key={header.id}>
                   {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                 </S.TableHeadCell>
               ))}

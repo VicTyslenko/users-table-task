@@ -1,14 +1,16 @@
-import { instance } from "../services/api/axios";
 import { useEffect, useState } from "react";
 import type { ContactsProps } from "../shared/models";
+import { fetchGetUsers } from "../services/api/fetchGetUsers";
 
 export const useContacts = (searchValue: string) => {
   const [data, setData] = useState<ContactsProps[]>([]);
+
   const [filteredUsers, setFilteredUsers] = useState<ContactsProps[]>([]);
 
   const fetchUsersData = async () => {
     try {
-      const res = await instance.get("/users");
+      const res = await fetchGetUsers();
+
       const data = res.data as ContactsProps[];
 
       setData(data);

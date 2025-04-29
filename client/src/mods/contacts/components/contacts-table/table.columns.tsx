@@ -4,9 +4,8 @@ import { Name } from "../extensions/name";
 import { AccessCell } from "../extensions/access-cell/access-cell";
 import type { ContactsProps } from "../../../../shared/models";
 
-import { AccessIcon } from "../../../../assets/icons/access-icon";
-import { BlockedIcon } from "../../../../assets/icons/blocked-icon";
 import { DeleteButton } from "../extensions/delete-button/delete-button";
+
 export const renderColumns = (): ColumnDef<ContactsProps>[] => [
   {
     accessorKey: "DisplayName",
@@ -27,7 +26,7 @@ export const renderColumns = (): ColumnDef<ContactsProps>[] => [
     accessorKey: "AdminUser",
     header: "Role",
     cell: (info) => {
-      const role = info.row.original.IsOSPAdmin;
+      const role = info.row.original.AdminUser;
 
       return role ? "Admin" : "User";
     },
@@ -46,8 +45,9 @@ export const renderColumns = (): ColumnDef<ContactsProps>[] => [
   {
     header: "Edit",
     accessorKey: "edit",
+
     cell: (info) => {
-      const { Status, FunctionalUser, AdminUser, ColourMode, HierarchyMaintenance, ...formValues } = info.row.original;
+      const { Status, FunctionalUser, ColourMode, HierarchyMaintenance, ...formValues } = info.row.original;
 
       return <EditButton values={formValues} />;
     },
@@ -59,7 +59,7 @@ export const renderColumns = (): ColumnDef<ContactsProps>[] => [
     cell: (info) => {
       const id = info.row.original.UserID;
 
-      return <DeleteButton id={id} />;
+      return <DeleteButton id={id} disabled={info.row.original.AdminUser} />;
     },
   },
 ];

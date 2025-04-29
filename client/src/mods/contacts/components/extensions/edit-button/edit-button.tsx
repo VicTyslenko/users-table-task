@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const EditButton = ({ values }: Props) => {
-  const role = values.IsOSPAdmin;
+  const role = values.AdminUser;
 
   const [open, setOpen] = useState(false);
 
