@@ -7,7 +7,7 @@ import { fetchDeleteUser } from "../../../../../services/api/fetchDeleteUser";
 import toast from "react-hot-toast";
 
 type Props = {
-  userId: number;
+  userId?: number;
   closeModal: () => void;
 };
 

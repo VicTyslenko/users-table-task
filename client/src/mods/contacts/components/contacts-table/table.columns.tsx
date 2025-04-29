@@ -59,7 +59,7 @@ export const renderColumns = (): ColumnDef<ContactsProps>[] => [
     cell: (info) => {
       const id = info.row.original.UserID;
 
-      return <DeleteButton id={id} disabled={info.row.original.AdminUser} />;
+      return <DeleteButton id={id} disabled={info.row.original?.AdminUser} />;
     },
   },
 ];

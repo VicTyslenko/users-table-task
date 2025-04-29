@@ -11,8 +11,6 @@ export const Contacts = () => {
 
   const { data, refetch } = useContacts(searchContactValue);
 
-  console.log(data);
-
   const handleSearch = (value: string) => {
     setSearchContactValue(value);
   };

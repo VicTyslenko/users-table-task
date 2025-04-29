@@ -2,7 +2,7 @@ import { AccessIcon } from "../../../../../assets/icons/access-icon";
 import { BlockedIcon } from "../../../../../assets/icons/blocked-icon";
 import * as S from "./styles";
 
-export const AccessCell = (access: number) => {
+export const AccessCell = (access: boolean) => {
   return (
     <S.Wrapper>
       {!access ? (

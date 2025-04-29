@@ -1,10 +1,11 @@
 export type FormProps = {
-  firstName: string;
-  lastName: string;
+  DisplayName: string;
+
+  UserId?: number;
   Email: string;
   MFA_Mobile: string;
-  AdminUser: boolean;
-  BlockAccess: boolean;
+  AdminUser?: boolean;
+  BlockAccess: number;
   O365Email: string;
 };
 

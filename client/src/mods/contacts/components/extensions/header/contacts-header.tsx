@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import { Modal } from "../../../../../shared/modal/modal";
 import { DefaultTextField } from "../../../../../shared/default-text-field";
-import { NewContact } from "../new-contact/new-contact";
+import { NewUser } from "../new-user/new-user";
 import { useState } from "react";
 import { AddContactIcon } from "../../../../../assets/icons/add-contact";
 import { DefaultButton } from "../../../../../shared/button/default-button";
@@ -26,7 +26,7 @@ export const ContactsHeader = ({ searchValue, handleSearch }: HeaderProps) => {
         onChange={(event) => handleSearch(event.target.value)}
         value={searchValue}
       />
-      {open && <Modal isOpen={open} children={<NewContact onClose={handleClose} />} onClose={handleClose} />}
+      {open && <Modal isOpen={open} children={<NewUser onClose={handleClose} />} onClose={handleClose} />}
     </S.HeaderWrapper>
   );
 };

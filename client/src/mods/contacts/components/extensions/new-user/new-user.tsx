@@ -13,7 +13,7 @@ import { ButtonsGroup } from "../../../../../shared/button-group/button-group";
 import { CloseIcon } from "../../../../../assets/icons/close-icon";
 import { useUsersContext } from "../../../../../shared/hooks";
 
-export const NewContact = ({ onClose }: Props) => {
+export const NewUser = ({ onClose }: Props) => {
   const { register, handleSubmit, watch, formState } = useForm<FormProps>({
     defaultValues,
     resolver: zodResolver(addUserSchema),
@@ -22,13 +22,13 @@ export const NewContact = ({ onClose }: Props) => {
   const { errors } = formState;
 
   const handleFormSubmit = async (values: FormProps) => {
-    const { firstName, lastName, Email, MFA_Mobile, AdminUser, BlockAccess, O365Email } = values;
+    const { DisplayName, Email, MFA_Mobile, AdminUser, BlockAccess, O365Email } = values;
 
-    const displayName = `${firstName} ${lastName}`;
-
+    // const displayName = `${firstName} ${lastName}`;
+    console.log(values);
     try {
       await fetchAddUser({
-        DisplayName: displayName,
+        DisplayName,
         Email,
         MFA_Mobile,
         AdminUser,
@@ -64,15 +64,10 @@ export const NewContact = ({ onClose }: Props) => {
             <ToggleSwitch {...register("AdminUser")} />
           </S.FlexWrapp>
 
-          <S.Label>First name</S.Label>
-          <DefaultTextField placeholder="Type first name" {...register("firstName")} />
-          {errors.firstName && <S.ErrorMessage>{errors.firstName.message}</S.ErrorMessage>}
+          <S.Label>Full name</S.Label>
+          <DefaultTextField placeholder="Type display name" {...register("DisplayName")} />
 
-          <S.Label>Last name</S.Label>
-          <DefaultTextField placeholder="Type last name" {...register("lastName")} />
-          {errors.lastName && <S.ErrorMessage>{errors.lastName.message}</S.ErrorMessage>}
-
-          <S.Label>Number</S.Label>
+          <S.Label>Mobile Number</S.Label>
           <DefaultTextField placeholder="Type a number" {...register("MFA_Mobile")} />
           {errors.MFA_Mobile && <S.ErrorMessage>{errors.MFA_Mobile.message}</S.ErrorMessage>}
 

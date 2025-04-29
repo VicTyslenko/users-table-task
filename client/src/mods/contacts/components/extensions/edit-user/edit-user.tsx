@@ -1,23 +1,26 @@
-import * as S from "../new-contact/styles";
+import * as S from "../new-user/styles";
 
 import { DefaultTextField } from "../../../../../shared/default-text-field";
 import { DefaultButton } from "../../../../../shared/button";
 import { fetchEditUser } from "../../../../../services/api/fetchEditUser";
 import { useForm } from "react-hook-form";
+import { addUserSchema } from "../../../../../shared/schemas/validate-schema";
 import { CloseIcon } from "../../../../../assets/icons/close-icon";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { editUserSchema } from "../../../../../shared/schemas/validate-schema";
 import toast from "react-hot-toast";
+
 import type { EditFormProps } from "../../../../../shared/models";
 import { useUsersContext } from "../../../../../shared/hooks";
 import { ButtonsGroup } from "../../../../../shared/button-group/button-group";
+import { ToggleSwitch } from "../../../../../shared/toggle-switch/toggle-switch";
 
 type Props = {
   onClose: () => void;
   values: EditFormProps;
 };
 
-export const EditContact = ({ onClose, values }: Props) => {
+export const EditUser = ({ onClose, values }: Props) => {
   const { register, handleSubmit, watch, formState } = useForm<EditFormProps>({
     defaultValues: values,
     resolver: zodResolver(editUserSchema),
@@ -28,9 +31,9 @@ export const EditContact = ({ onClose, values }: Props) => {
   const { refetch } = useUsersContext();
 
   const handleFormSubmit = async (newValues: EditFormProps) => {
-    try {
-      const id = values.UserID;
+    const id = values.UserID;
 
+    try {
       await fetchEditUser(id, newValues);
 
       refetch();
@@ -65,14 +68,14 @@ export const EditContact = ({ onClose, values }: Props) => {
           <DefaultTextField placeholder="Type email address" {...register("Email")} />
           {errors.Email && <S.ErrorMessage>{errors.Email.message}</S.ErrorMessage>}
 
-          <S.Label>Block Access</S.Label>
-          <DefaultTextField type="number" placeholder="Set block access" {...register("BlockAccess", { valueAsNumber: true })} />
-          {errors.BlockAccess && <S.ErrorMessage>{errors.BlockAccess.message}</S.ErrorMessage>}
-
-          <S.Label>O365 Email</S.Label>
-          <DefaultTextField placeholder="Type O365 email (optional)" {...register("O365Email")} />
+          <S.Label>Microsoft 365 Email</S.Label>
+          <DefaultTextField placeholder="Type email address" {...register("O365Email")} />
           {errors.O365Email && <S.ErrorMessage>{errors.O365Email.message}</S.ErrorMessage>}
 
+          <S.FlexWrapp>
+            <S.Label>Block user</S.Label>
+            <ToggleSwitch blocked {...register("BlockAccess")} />
+          </S.FlexWrapp>
           <ButtonsGroup>
             <DefaultButton variant="secondary" onClick={onClose}>
               Cancel

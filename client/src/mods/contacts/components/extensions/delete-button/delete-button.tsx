@@ -6,8 +6,8 @@ import { DeleteUserWarning } from "../delete-user-warning/delete-user-warning";
 import * as S from "./styles";
 
 type Props = {
-  id: number;
-  disabled: boolean;
+  id?: number;
+  disabled?: boolean;
 };
 export const DeleteButton = ({ id, disabled }: Props) => {
   const [open, setOpen] = useState(false);

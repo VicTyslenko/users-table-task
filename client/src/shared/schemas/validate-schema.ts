@@ -1,21 +1,20 @@
 import { z } from "zod";
 
 export const addUserSchema = z.object({
-  firstName: z.string().min(2).max(15).trim(),
-  lastName: z.string().min(2).max(15).trim(),
+  DisplayName: z.string().min(2).max(50).trim(),
   Email: z.string().email().trim(),
-  MFA_Mobile: z.string().min(11).trim(),
-  AdminUser: z.boolean(),
-  BlockAccess: z.boolean(),
+  MFA_Mobile: z.string().min(11).max(15).regex(/^\d+$/, { message: "Must contain only digits" }).trim(),
+  AdminUser: z.boolean().optional(),
+  BlockAccess: z.number().min(0),
   O365Email: z.string().email(),
+  UserID: z.number().optional(),
 });
 
 export const editUserSchema = z.object({
   DisplayName: z.string().min(2).max(50).trim(),
   Email: z.string().email().trim(),
-  AdminUser: z.boolean(),
-  BlockAccess: z.number().min(0),
+  BlockAccess: z.boolean(),
   O365Email: z.string().email().optional(),
-  MFA_Mobile: z.string().min(11).trim(),
+  MFA_Mobile: z.string().min(11).max(15).regex(/^\d+$/, { message: "Must contain only digits" }).trim(),
   UserID: z.number(),
 });
