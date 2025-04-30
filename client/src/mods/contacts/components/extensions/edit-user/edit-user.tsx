@@ -4,7 +4,6 @@ import { DefaultTextField } from "../../../../../shared/default-text-field";
 import { DefaultButton } from "../../../../../shared/button";
 import { fetchEditUser } from "../../../../../services/api/fetchEditUser";
 import { useForm } from "react-hook-form";
-import { addUserSchema } from "../../../../../shared/schemas/validate-schema";
 import { CloseIcon } from "../../../../../assets/icons/close-icon";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { editUserSchema } from "../../../../../shared/schemas/validate-schema";
@@ -21,7 +20,7 @@ type Props = {
 };
 
 export const EditUser = ({ onClose, values }: Props) => {
-  const { register, handleSubmit, watch, formState } = useForm<EditFormProps>({
+  const { register, handleSubmit, formState } = useForm<EditFormProps>({
     defaultValues: values,
     resolver: zodResolver(editUserSchema),
   });

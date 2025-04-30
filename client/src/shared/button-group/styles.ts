@@ -10,5 +10,5 @@ export const ButtonsWrapper = styled.div`
   padding: 4px;
 
   border-radius: 10px;
-  /* background: #efefef; */
+
 `;

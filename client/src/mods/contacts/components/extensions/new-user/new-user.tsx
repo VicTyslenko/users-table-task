@@ -24,8 +24,6 @@ export const NewUser = ({ onClose }: Props) => {
   const handleFormSubmit = async (values: FormProps) => {
     const { DisplayName, Email, MFA_Mobile, AdminUser, BlockAccess, O365Email } = values;
 
-    // const displayName = `${firstName} ${lastName}`;
-    console.log(values);
     try {
       await fetchAddUser({
         DisplayName,

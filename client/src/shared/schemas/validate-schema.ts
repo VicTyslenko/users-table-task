@@ -20,6 +20,11 @@ export const editUserSchema = z.object({
   Email: z.string().email().trim(),
   BlockAccess: z.boolean(),
   O365Email: z.string().email().optional(),
-  MFA_Mobile: z.string().min(8).max(15).regex(/^\d+$/, { message: "Must contain only digits" }).trim(),
+  MFA_Mobile: z
+    .string()
+    .min(8)
+    .max(15)
+    .regex(/^[\d-]+$/, { message: "Must contain only digits" })
+    .trim(),
   UserID: z.number(),
 });

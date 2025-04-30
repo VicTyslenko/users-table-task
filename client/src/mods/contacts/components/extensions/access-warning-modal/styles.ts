@@ -15,9 +15,6 @@ export const Wrapper = styled.div`
     width: 60px;
     height: 60px;
   }
-  /* & .default-button {
-    min-width: 200px;
-  } */
 `;
 
 export const IconWrapp = styled.div`
