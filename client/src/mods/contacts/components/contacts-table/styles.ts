@@ -5,23 +5,17 @@ export const TableWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  min-height: 620px;
   background-color: #fff;
   border-radius: 16px;
   padding: 10px;
   background: #fff;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  max-height: 620px;
   overflow: auto;
 `;
 
-export const Table = styled.table`
-  /* display: grid;
-  width: 100%;
-  min-width: 768px;
-  border-collapse: collapse;
-  border-spacing: 0;
-  table-layout: fixed; */
-`;
+export const Table = styled.table``;
+
 export const TableHead = styled.thead`
   z-index: 500;
 

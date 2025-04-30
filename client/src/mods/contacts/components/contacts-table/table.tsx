@@ -15,30 +15,32 @@ export const UsersTable = ({ data }: UsersTableProps) => {
   });
 
   return (
-    <S.TableWrapper>
-      <S.Table>
-        <S.TableHead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <S.TableHeadRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <S.TableHeadCell key={header.id}>
-                  {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                </S.TableHeadCell>
-              ))}
-            </S.TableHeadRow>
-          ))}
-        </S.TableHead>
+    <>
+      <S.TableWrapper>
+        <S.Table>
+          <S.TableHead>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <S.TableHeadRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <S.TableHeadCell key={header.id}>
+                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                  </S.TableHeadCell>
+                ))}
+              </S.TableHeadRow>
+            ))}
+          </S.TableHead>
 
-        <S.TableBody>
-          {table.getRowModel().rows.map((row) => (
-            <S.TableBodyRow key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <S.TableRowData key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</S.TableRowData>
-              ))}
-            </S.TableBodyRow>
-          ))}
-        </S.TableBody>
-      </S.Table>
-    </S.TableWrapper>
+          <S.TableBody>
+            {table.getRowModel().rows.map((row) => (
+              <S.TableBodyRow key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <S.TableRowData key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</S.TableRowData>
+                ))}
+              </S.TableBodyRow>
+            ))}
+          </S.TableBody>
+        </S.Table>
+      </S.TableWrapper>
+    </>
   );
 };
