@@ -25,25 +25,20 @@ A full-stack application for managing users with features like:
 ```bash
 git clone https://github.com/VicTyslenko/users-table-task.git
 
-
+2. Install dependencies
 Backend (root)
 npm install
 
 Frontend
-
-npm install
-
-
 cd client
-
 npm install
 
- Start the backend server:
- npm start
 
- Start the frontend app:
+Start the backend server:
+npm start
 
- npm start
+Start the frontend app:
+npm start
 
 
 
