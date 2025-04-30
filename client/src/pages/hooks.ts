@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { ContactsProps } from "../shared/models";
 import { fetchGetUsers } from "../services/api/fetchGetUsers";
 
-export const useContacts = (searchValue: string, pageSize: number = 5) => {
+export const useContacts = (searchValue: string, pageSize: number = 10) => {
   const [data, setData] = useState<ContactsProps[]>([]);
   const [step, setStep] = useState(1);
 

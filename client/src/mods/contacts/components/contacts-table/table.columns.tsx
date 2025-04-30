@@ -17,10 +17,21 @@ export const renderColumns = (): ColumnDef<ContactsProps>[] => [
     accessorKey: "MFA_Mobile",
     header: "Mobile",
   },
+
   {
     accessorKey: "Email",
     header: "Email",
   },
+
+  // {
+  //   accessorKey: "O365Email",
+  //   header: "Microsoft 365 Email",
+  //   cell: (info) => {
+  //     const email = info.row.original.O365Email;
+  //     const shortMail = email?.slice(0, 5);
+  //     return `${shortMail}...`;
+  //   },
+  // },
 
   {
     accessorKey: "AdminUser",

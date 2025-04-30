@@ -48,16 +48,63 @@ export const TableHeadCell = styled.th`
   font-weight: 500;
   line-height: normal;
 
+  @media screen and (max-width: 1440px) {
+    &:nth-child(2) {
+      max-width: 220px;
+    }
+    &:nth-child(5) {
+      max-width: 150px;
+    }
+    &:nth-child(7) {
+      max-width: 150px;
+    }
+    &:nth-child(6) {
+      max-width: 100px;
+    }
+    &:nth-child(4) {
+      max-width: 100px;
+    }
+  }
   &:first-child {
     padding-left: 16px;
     border-radius: 10px 0 0 10px;
   }
-
-  &:last-child {
-    border-radius: 0 10px 10px 0;
-  }
 `;
 
+export const TableRowData = styled.td`
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  max-width: 100%;
+
+  color: #292e33;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+
+  &:first-child {
+    padding-left: 16px;
+  }
+
+  @media screen and (max-width: 1440px) {
+    &:nth-child(2) {
+      max-width: 220px;
+    }
+    &:nth-child(5) {
+      max-width: 150px;
+    }
+    &:nth-child(7) {
+      max-width: 150px;
+    }
+    &:nth-child(6) {
+      max-width: 100px;
+    }
+    &:nth-child(4) {
+      max-width: 100px;
+    }
+  }
+`;
 export const TableBody = styled.tbody`
   position: relative;
 
@@ -88,22 +135,5 @@ export const TableBodyRow = styled.tr`
 
   &:not(:last-child) {
     border-bottom: 1px solid #dedfe0;
-  }
-`;
-
-export const TableRowData = styled.td`
-  display: flex;
-  align-items: center;
-
-  width: 100%;
-  max-width: 100%;
-
-  color: #292e33;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: normal;
-
-  &:first-child {
-    padding-left: 16px;
   }
 `;
