@@ -2,7 +2,7 @@ const sql = require("mssql");
 
 const config = require("../config/config");
 
-// Controller for adding a new user to data base
+// Controller to create a new user
 exports.createUser = async (req, res) => {
   const { DisplayName, Email, MFA_Mobile, AdminUser, O365Email, BlockAccess } = req.body;
 
@@ -11,6 +11,23 @@ exports.createUser = async (req, res) => {
 
   try {
     await sql.connect(config);
+
+    const emailCheck = await sql.query`
+    SELECT * FROM Users WHERE Email = ${Email}
+    `;
+
+    if (emailCheck.recordset.length > 0) {
+      return res.status(409).json({ error: "Email already exists." });
+    }
+
+    const usernameCheck = await sql.query`
+  SELECT * FROM Users WHERE DisplayName = ${DisplayName}
+`;
+
+    if (usernameCheck.recordset.length > 0) {
+      return res.status(409).json({ error: "Username already exists." });
+    }
+
     await sql.query`
       INSERT INTO Users (DisplayName, Email, MFA_Mobile, AdminUser, O365Email, BlockAccess)
       VALUES (${DisplayName}, ${Email}, ${MFA_Mobile}, ${isAdmin}, ${O365Email}, ${isBlocked})
@@ -23,7 +40,7 @@ exports.createUser = async (req, res) => {
   }
 };
 
-// Controller for getting all users
+// Controller to get all users
 exports.getUsers = async (_, res) => {
   try {
     await sql.connect(config);
@@ -35,6 +52,7 @@ exports.getUsers = async (_, res) => {
   }
 };
 
+// Controller to delete user
 exports.deleteUser = async (req, res) => {
   const { id } = req.params;
 
@@ -53,6 +71,7 @@ exports.deleteUser = async (req, res) => {
   }
 };
 
+// Controller to edit user
 exports.editUser = async (req, res) => {
   const id = req.params.id;
   const { DisplayName, Email, MFA_Mobile, BlockAccess, O365Email } = req.body;

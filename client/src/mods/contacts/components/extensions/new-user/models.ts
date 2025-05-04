@@ -1,6 +1,5 @@
 export type FormProps = {
   DisplayName: string;
-
   UserId?: number;
   Email: string;
   MFA_Mobile: string;

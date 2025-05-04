@@ -48,7 +48,12 @@ export const Header = styled.h1`
   color: #292e33;
 `;
 
-export const Label = styled.span``;
+
+export const Label = styled.span`
+  &.admin {
+    font-weight: 600;
+  }
+`;
 
 export const ErrorMessage = styled.p`
   font-weight: 400;

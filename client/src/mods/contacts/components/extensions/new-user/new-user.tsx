@@ -14,7 +14,7 @@ import { CloseIcon } from "../../../../../assets/icons/close-icon";
 import { useUsersContext } from "../../../../../shared/hooks";
 
 export const NewUser = ({ onClose }: Props) => {
-  const { register, handleSubmit, watch, formState } = useForm<FormProps>({
+  const { register, handleSubmit, watch, formState, setError } = useForm<FormProps>({
     defaultValues,
     resolver: zodResolver(addUserSchema),
   });
@@ -22,24 +22,17 @@ export const NewUser = ({ onClose }: Props) => {
   const { errors } = formState;
 
   const handleFormSubmit = async (values: FormProps) => {
-    const { DisplayName, Email, MFA_Mobile, AdminUser, BlockAccess, O365Email } = values;
-
     try {
-      await fetchAddUser({
-        DisplayName,
-        Email,
-        MFA_Mobile,
-        AdminUser,
-        BlockAccess,
-        O365Email,
-      });
+      await fetchAddUser(values);
 
       refetch();
 
       toast.success("New contact successfully added!");
       onClose();
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      const errorMessage = error.response.data?.error || "Something went wrong";
+
+      setError("root", { type: "manual", message: errorMessage });
     }
   };
 
@@ -58,7 +51,7 @@ export const NewUser = ({ onClose }: Props) => {
           </S.HeaderWrapp>
 
           <S.FlexWrapp>
-            <S.Label>Admin</S.Label>
+            <S.Label className="admin">Admin</S.Label>
             <ToggleSwitch {...register("AdminUser")} />
           </S.FlexWrapp>
 
@@ -71,7 +64,7 @@ export const NewUser = ({ onClose }: Props) => {
 
           <S.Label>Email</S.Label>
           <DefaultTextField placeholder="Type email address" {...register("Email")} />
-          {errors.Email && <S.ErrorMessage>{errors.Email.message}</S.ErrorMessage>}
+          {errors.Email && <S.ErrorMessage>{errors?.Email?.message}</S.ErrorMessage>}
 
           <S.Label>Microsoft 365 Email</S.Label>
           <DefaultTextField placeholder="Type email address" {...register("O365Email")} />
@@ -79,10 +72,12 @@ export const NewUser = ({ onClose }: Props) => {
 
           {!adminUser && (
             <S.FlexWrapp>
-              <S.Label>Block user</S.Label>
+              <S.Label className="admin">Block user</S.Label>
               <ToggleSwitch blocked {...register("BlockAccess")} />
             </S.FlexWrapp>
           )}
+
+          {errors.root && <S.ErrorMessage>{errors.root.message}</S.ErrorMessage>}
 
           <ButtonsGroup>
             <DefaultButton variant="secondary" onClick={onClose}>
