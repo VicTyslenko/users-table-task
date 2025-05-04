@@ -19,9 +19,14 @@ export const EditButton = ({ values }: Props) => {
   };
 
   const renderModalContent = () => {
-    const { AdminUser, ...valuesForEdit } = values;
+    const { AdminUser, ...rest } = values;
 
-    return AdminUser ? <AccessWarning onClose={handleClose} /> : <EditUser onClose={handleClose} values={valuesForEdit} />;
+    const convertedValues = {
+      ...rest,
+      BlockAccess: Boolean(rest.BlockAccess),
+    };
+
+    return AdminUser ? <AccessWarning onClose={handleClose} /> : <EditUser onClose={handleClose} values={convertedValues} />;
   };
 
   return (

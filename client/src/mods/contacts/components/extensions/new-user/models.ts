@@ -4,7 +4,7 @@ export type FormProps = {
   Email: string;
   MFA_Mobile: string;
   AdminUser?: boolean;
-  BlockAccess: number;
+  BlockAccess: boolean;
   O365Email: string;
 };
 

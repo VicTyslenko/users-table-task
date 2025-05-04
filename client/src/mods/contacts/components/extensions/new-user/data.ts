@@ -3,6 +3,6 @@ export const defaultValues = {
   Email: "",
   MFA_Mobile: "",
   AdminUser: false,
-  BlockAccess: 0,
+  BlockAccess: false,
   O365Email: "",
 };

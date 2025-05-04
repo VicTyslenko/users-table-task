@@ -10,7 +10,7 @@ export const addUserSchema = z.object({
     .regex(/^[\d-]+$/, { message: "Must contain only digits" })
     .trim(),
   AdminUser: z.boolean().optional(),
-  BlockAccess: z.number().min(0),
+  BlockAccess: z.boolean(),
   O365Email: z.string().email(),
   UserID: z.number().optional(),
 });

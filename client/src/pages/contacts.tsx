@@ -10,7 +10,7 @@ export const Contacts = () => {
   const [searchContactValue, setSearchContactValue] = useState("");
 
   const { data, step, setStep, totalPages, refetch } = useContacts(searchContactValue);
-
+  console.log(data);
   const handleSearch = (value: string) => {
     setSearchContactValue(value);
     setStep(1);

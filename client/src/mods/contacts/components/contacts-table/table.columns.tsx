@@ -38,8 +38,7 @@ export const renderColumns = (): ColumnDef<ContactsProps>[] => [
     header: "Access",
     cell: (info) => {
       const access = info.row.original.BlockAccess;
-
-      return AccessCell(access);
+      return AccessCell(Boolean(access));
     },
   },
 

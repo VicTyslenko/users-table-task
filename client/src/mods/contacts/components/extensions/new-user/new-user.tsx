@@ -3,22 +3,25 @@ import { DefaultButton } from "../../../../../shared/button/default-button";
 import { DefaultTextField } from "../../../../../shared/default-text-field";
 import { ToggleSwitch } from "../../../../../shared/toggle-switch/toggle-switch";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { defaultValues } from "./data";
 import { type Props, FormProps } from "./models";
 import { fetchAddUser } from "../../../../../services/api/fetchAddUser";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { addUserSchema } from "../../../../../shared/schemas/validate-schema";
 import { ButtonsGroup } from "../../../../../shared/button-group/button-group";
 import { CloseIcon } from "../../../../../assets/icons/close-icon";
 import { useUsersContext } from "../../../../../shared/hooks";
 
 export const NewUser = ({ onClose }: Props) => {
-  const { register, handleSubmit, watch, formState, setError } = useForm<FormProps>({
+  const { register, handleSubmit, watch, formState, setError, control, setValue } = useForm<FormProps>({
     defaultValues,
     resolver: zodResolver(addUserSchema),
   });
+
   const { refetch } = useUsersContext();
+
   const { errors } = formState;
 
   const handleFormSubmit = async (values: FormProps) => {
@@ -38,6 +41,12 @@ export const NewUser = ({ onClose }: Props) => {
 
   const adminUser = watch("AdminUser");
 
+  useEffect(() => {
+    if (adminUser) {
+      setValue("BlockAccess", false);
+    }
+  }, [adminUser, setValue]);
+
   return (
     <S.Wrapper>
       <S.Form onSubmit={handleSubmit(handleFormSubmit)}>
@@ -50,13 +59,20 @@ export const NewUser = ({ onClose }: Props) => {
             </DefaultButton>
           </S.HeaderWrapp>
 
-          <S.FlexWrapp>
-            <S.Label className="admin">Admin</S.Label>
-            <ToggleSwitch {...register("AdminUser")} />
-          </S.FlexWrapp>
+          <Controller
+            control={control}
+            name="AdminUser"
+            render={({ field }) => (
+              <S.FlexWrapp>
+                <S.Label>Admin</S.Label>
+
+                <ToggleSwitch checked={field.value ?? false} onChange={field.onChange} />
+              </S.FlexWrapp>
+            )}
+          />
 
           <S.Label>Full name</S.Label>
-          <DefaultTextField placeholder="Type display name" {...register("DisplayName")} />
+          <DefaultTextField placeholder="Type a full name" {...register("DisplayName")} />
 
           <S.Label>Mobile Number</S.Label>
           <DefaultTextField placeholder="Type a number" {...register("MFA_Mobile")} />
@@ -71,10 +87,17 @@ export const NewUser = ({ onClose }: Props) => {
           {errors.O365Email && <S.ErrorMessage>{errors.O365Email.message}</S.ErrorMessage>}
 
           {!adminUser && (
-            <S.FlexWrapp>
-              <S.Label className="admin">Block user</S.Label>
-              <ToggleSwitch blocked {...register("BlockAccess")} />
-            </S.FlexWrapp>
+            <Controller
+              control={control}
+              name="BlockAccess"
+              render={({ field }) => (
+                <S.FlexWrapp>
+                  <S.Label>Block user</S.Label>
+
+                  <ToggleSwitch blocked checked={field.value} onChange={field.onChange} />
+                </S.FlexWrapp>
+              )}
+            />
           )}
 
           {errors.root && <S.ErrorMessage>{errors.root.message}</S.ErrorMessage>}

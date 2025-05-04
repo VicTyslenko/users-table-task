@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface ToggleSwitchProps {
-  blocked?: boolean;
+  $blocked?: boolean;
 }
 
 export const ToggleSwitch = styled.label<ToggleSwitchProps>`
@@ -18,7 +18,7 @@ export const ToggleSwitch = styled.label<ToggleSwitchProps>`
     height: 0;
 
     &:checked + .toggle-switch_slider {
-      background-color: ${({ blocked }) => (blocked ? "#ff5147" : "#77dd77")};
+      background-color: ${({ $blocked }) => ($blocked ? "#ff5147" : "#77dd77")};
     }
 
     &:checked + .toggle-switch_slider:before {

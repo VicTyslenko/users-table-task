@@ -5,7 +5,7 @@ type ParamsProps = {
   Email: string;
   MFA_Mobile: string;
   AdminUser?: boolean;
-  BlockAccess: number;
+  BlockAccess: boolean;
   O365Email: string;
 };
 export const fetchAddUser = (params: ParamsProps) => instance.post("/users/create-user", params);

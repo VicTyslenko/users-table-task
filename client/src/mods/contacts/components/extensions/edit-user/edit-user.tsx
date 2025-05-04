@@ -3,7 +3,7 @@ import * as S from "../new-user/styles";
 import { DefaultTextField } from "../../../../../shared/default-text-field";
 import { DefaultButton } from "../../../../../shared/button";
 import { fetchEditUser } from "../../../../../services/api/fetchEditUser";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { CloseIcon } from "../../../../../assets/icons/close-icon";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { editUserSchema } from "../../../../../shared/schemas/validate-schema";
@@ -20,7 +20,7 @@ type Props = {
 };
 
 export const EditUser = ({ onClose, values }: Props) => {
-  const { register, handleSubmit, formState } = useForm<EditFormProps>({
+  const { register, handleSubmit, formState, control } = useForm<EditFormProps>({
     defaultValues: values,
     resolver: zodResolver(editUserSchema),
   });
@@ -71,10 +71,17 @@ export const EditUser = ({ onClose, values }: Props) => {
           <DefaultTextField placeholder="Type email address" {...register("O365Email")} />
           {errors.O365Email && <S.ErrorMessage>{errors.O365Email.message}</S.ErrorMessage>}
 
-          <S.FlexWrapp>
-            <S.Label>Block user</S.Label>
-            <ToggleSwitch blocked {...register("BlockAccess")} />
-          </S.FlexWrapp>
+          <Controller
+            control={control}
+            name="BlockAccess"
+            render={({ field }) => (
+              <S.FlexWrapp>
+                <S.Label className="admin">Block user</S.Label>
+
+                <ToggleSwitch blocked checked={field.value} onChange={field.onChange} />
+              </S.FlexWrapp>
+            )}
+          />
           <ButtonsGroup>
             <DefaultButton variant="secondary" onClick={onClose}>
               Cancel
