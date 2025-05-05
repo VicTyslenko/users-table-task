@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
 import type { ContactsProps } from "../shared/models";
 import { fetchGetUsers } from "../services/api/fetchGetUsers";
+import { useSearchParams } from "react-router-dom";
 
 export const useContacts = (searchValue: string, pageSize: number = 10) => {
   const [data, setData] = useState<ContactsProps[]>([]);
-  const [step, setStep] = useState(1);
+
+  const [searchParameters, setSearchParameters] = useSearchParams();
+
+  const step = Number(searchParameters.get("step") || 1);
 
   const fetchUsersData = async () => {
     try {
       const res = await fetchGetUsers();
-      const data = res.data as ContactsProps[];
-      setData(data);
+
+      const allUsersData = res.data as ContactsProps[];
+
+      setData(allUsersData);
     } catch (error) {
       console.error(error);
     }
@@ -21,8 +27,8 @@ export const useContacts = (searchValue: string, pageSize: number = 10) => {
   }, []);
 
   useEffect(() => {
-    setStep(1);
-  }, [searchValue]);
+    setSearchParameters({ step: "1" });
+  }, []);
 
   const filteredUsers = data.filter((user) => user.DisplayName.toLowerCase().includes(searchValue.toLowerCase()));
 
@@ -34,7 +40,6 @@ export const useContacts = (searchValue: string, pageSize: number = 10) => {
     data: paginatedData,
     totalPages,
     step,
-    setStep,
     refetch: fetchUsersData,
   };
 };

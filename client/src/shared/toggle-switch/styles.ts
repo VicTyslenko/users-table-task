@@ -5,7 +5,6 @@ interface ToggleSwitchProps {
 }
 
 export const ToggleSwitch = styled.label<ToggleSwitchProps>`
-  overflow: hidden;
   width: 36px;
   min-width: 36px;
   height: 20px;

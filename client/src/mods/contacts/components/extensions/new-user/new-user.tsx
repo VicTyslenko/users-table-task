@@ -64,7 +64,7 @@ export const NewUser = ({ onClose }: Props) => {
             name="AdminUser"
             render={({ field }) => (
               <S.FlexWrapp>
-                <S.Label>Admin</S.Label>
+                <S.Label className="admin">Admin</S.Label>
 
                 <ToggleSwitch checked={field.value ?? false} onChange={field.onChange} />
               </S.FlexWrapp>
@@ -92,7 +92,7 @@ export const NewUser = ({ onClose }: Props) => {
               name="BlockAccess"
               render={({ field }) => (
                 <S.FlexWrapp>
-                  <S.Label>Block user</S.Label>
+                  <S.Label className="admin">Block user</S.Label>
 
                   <ToggleSwitch blocked checked={field.value} onChange={field.onChange} />
                 </S.FlexWrapp>

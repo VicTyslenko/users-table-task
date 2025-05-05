@@ -1,17 +1,15 @@
 import * as S from "./styles";
+import { usePagination } from "./hooks";
 
-type Props = {
-  step: number;
-  setStep: (value: number) => void;
-  totalPages: number;
-};
+export const Pagination = ({ totalPages }: { totalPages: number }) => {
+  const { step, handleSetSearchParameters } = usePagination();
 
-export const Pagination = ({ step, setStep, totalPages }: Props) => {
   const renderPages = () => {
     return [...Array(totalPages)].map((_, index) => {
       const pageNumber = index + 1;
+
       return (
-        <S.PaginationAction key={pageNumber} $isActive={pageNumber === step} onClick={() => setStep(pageNumber)}>
+        <S.PaginationAction key={pageNumber} $isActive={pageNumber === step} onClick={() => handleSetSearchParameters(String(pageNumber))}>
           {pageNumber}
         </S.PaginationAction>
       );

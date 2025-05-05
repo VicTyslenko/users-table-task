@@ -9,11 +9,10 @@ import { useState } from "react";
 export const Contacts = () => {
   const [searchContactValue, setSearchContactValue] = useState("");
 
-  const { data, step, setStep, totalPages, refetch } = useContacts(searchContactValue);
-  console.log(data);
+  const { data, totalPages, refetch } = useContacts(searchContactValue);
+
   const handleSearch = (value: string) => {
     setSearchContactValue(value);
-    setStep(1);
   };
 
   return (
@@ -21,7 +20,7 @@ export const Contacts = () => {
       <S.Wrapper>
         <ContactsHeader handleSearch={handleSearch} searchValue={searchContactValue} />
         <UsersTable data={data} />
-        <Pagination step={step} setStep={setStep} totalPages={totalPages} />
+        <Pagination totalPages={totalPages} />
       </S.Wrapper>
     </UsersContext.Provider>
   );
