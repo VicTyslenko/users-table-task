@@ -31,7 +31,7 @@ exports.createUser = async (req, res) => {
 
     const isOSPAdmin = 0;
     const functionalUser = 0;
-    const status = "Active";
+    const status = "Testing";
     const colourMode = "L";
     const hierarchyMaintenance = 0;
 
