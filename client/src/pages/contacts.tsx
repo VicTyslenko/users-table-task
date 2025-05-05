@@ -4,16 +4,9 @@ import { ContactsHeader } from "../mods/contacts/components/extensions/header/co
 import { useContacts } from "./hooks";
 import { UsersContext } from "../shared/hooks";
 import { Pagination } from "../mods/contacts/components/extensions/pagination/pagination";
-import { useState } from "react";
 
 export const Contacts = () => {
-  const [searchContactValue, setSearchContactValue] = useState("");
-
-  const { data, totalPages, refetch } = useContacts(searchContactValue);
-
-  const handleSearch = (value: string) => {
-    setSearchContactValue(value);
-  };
+  const { data, totalPages, refetch, handleSearch, searchContactValue } = useContacts();
 
   return (
     <UsersContext.Provider value={{ refetch }}>

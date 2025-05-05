@@ -3,18 +3,22 @@ import type { ContactsProps } from "../shared/models";
 import { fetchGetUsers } from "../services/api/fetchGetUsers";
 import { useSearchParams } from "react-router-dom";
 
-export const useContacts = (searchValue: string, pageSize: number = 10) => {
+export const useContacts = (pageSize: number = 10) => {
   const [data, setData] = useState<ContactsProps[]>([]);
-
   const [searchParameters, setSearchParameters] = useSearchParams();
+  const [searchContactValue, setSearchContactValue] = useState("");
 
   const step = Number(searchParameters.get("step") || 1);
 
+  const handleSearch = (value: string) => {
+    setSearchContactValue(value);
+  };
+
   const fetchUsersData = async () => {
     try {
-      const res = await fetchGetUsers();
+      const response = await fetchGetUsers();
 
-      const allUsersData = res.data as ContactsProps[];
+      const allUsersData = response.data as ContactsProps[];
 
       setData(allUsersData);
     } catch (error) {
@@ -22,24 +26,24 @@ export const useContacts = (searchValue: string, pageSize: number = 10) => {
     }
   };
 
-  useEffect(() => {
+  const filteredUsers = data.filter((user) => user.DisplayName.toLowerCase().includes(searchContactValue.toLowerCase()));
+  const totalPages = Math.ceil(filteredUsers.length / pageSize);
+  const paginatedData = filteredUsers.slice((step - 1) * pageSize, step * pageSize);
+
+  useEffect(function getAllUsers() {
     fetchUsersData();
   }, []);
 
-  useEffect(() => {
+  useEffect(function resetPagination() {
     setSearchParameters({ step: "1" });
   }, []);
-
-  const filteredUsers = data.filter((user) => user.DisplayName.toLowerCase().includes(searchValue.toLowerCase()));
-
-  const totalPages = Math.ceil(filteredUsers.length / pageSize);
-
-  const paginatedData = filteredUsers.slice((step - 1) * pageSize, step * pageSize);
 
   return {
     data: paginatedData,
     totalPages,
     step,
     refetch: fetchUsersData,
+    searchContactValue,
+    handleSearch,
   };
 };

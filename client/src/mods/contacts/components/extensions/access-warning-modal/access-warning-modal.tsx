@@ -5,6 +5,7 @@ import { InfoIcon } from "../../../../../assets/icons/info-icon";
 type Props = {
   onClose: () => void;
 };
+
 export const AccessWarning = ({ onClose }: Props) => {
   return (
     <S.Wrapper>

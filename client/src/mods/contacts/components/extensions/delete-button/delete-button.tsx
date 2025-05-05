@@ -9,11 +9,13 @@ type Props = {
   id?: number;
   disabled?: boolean;
 };
+
 export const DeleteButton = ({ id, disabled }: Props) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setOpen(false);
   };
+
   return (
     <S.Wrapper>
       <DefaultButton disabled={disabled} onClick={() => setOpen(true)} variant="transparent">

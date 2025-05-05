@@ -19,6 +19,7 @@ export const ContactsHeader = ({ searchValue, handleSearch }: HeaderProps) => {
       <DefaultButton onClick={() => setOpen(true)}>
         <AddContactIcon /> Add
       </DefaultButton>
+
       <DefaultTextField
         withIcon
         placeholder="search contacts"
@@ -26,6 +27,7 @@ export const ContactsHeader = ({ searchValue, handleSearch }: HeaderProps) => {
         onChange={(event) => handleSearch(event.target.value)}
         value={searchValue}
       />
+
       {open && <Modal isOpen={open} children={<NewUser onClose={handleClose} />} onClose={handleClose} />}
     </S.HeaderWrapper>
   );

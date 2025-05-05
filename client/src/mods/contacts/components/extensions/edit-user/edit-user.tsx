@@ -8,7 +8,6 @@ import { CloseIcon } from "../../../../../assets/icons/close-icon";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { editUserSchema } from "../../../../../shared/schemas/validate-schema";
 import toast from "react-hot-toast";
-
 import type { EditFormProps } from "../../../../../shared/models";
 import { useUsersContext } from "../../../../../shared/hooks";
 import { ButtonsGroup } from "../../../../../shared/button-group/button-group";
@@ -26,7 +25,6 @@ export const EditUser = ({ onClose, values }: Props) => {
   });
 
   const { errors } = formState;
-
   const { refetch } = useUsersContext();
 
   const handleFormSubmit = async (newValues: EditFormProps) => {

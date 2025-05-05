@@ -20,6 +20,7 @@ export const editUserSchema = z.object({
   Email: z.string().email().trim(),
   BlockAccess: z.boolean(),
   O365Email: z.string().email().optional(),
+
   MFA_Mobile: z
     .string()
     .min(8)

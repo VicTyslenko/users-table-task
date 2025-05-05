@@ -8,4 +8,5 @@ type ParamsProps = {
   BlockAccess: boolean;
   O365Email: string;
 };
+
 export const fetchAddUser = (params: ParamsProps) => instance.post("/users/create-user", params);
