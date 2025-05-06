@@ -5,7 +5,7 @@ export const TableWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  min-height: 620px;
+  min-height: 550px;
   background-color: #fff;
   border-radius: 16px;
   padding: 10px;
