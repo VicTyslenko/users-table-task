@@ -1,10 +1,14 @@
+require("dotenv").config();
 const express = require("express");
+const sql = require("mssql");
+const config = require("./config/config");
 
 const cors = require("cors");
-require("dotenv").config();
 const users = require("./routes/users");
 
 const app = express();
+const appPool = new sql.ConnectionPool(config);
+
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -15,6 +19,16 @@ app.use(express.json());
 
 app.use("/api/users", users);
 
-app.listen(3001, () => {
-  console.log("Server is running on http://localhost:3001");
-});
+appPool
+  .connect()
+  .then((pool) => {
+    app.locals.db = pool;
+    const server = app.listen(3001, () => {
+      const host = server.address().address;
+      const port = server.address().port;
+      console.log(`Server is listening at http://${host}:${port}`);
+    });
+  })
+  .catch((err) => {
+    console.error("Error creating connection pool", err);
+  });
