@@ -9,8 +9,8 @@ import { defaultValues } from "./data";
 import { type Props, FormProps } from "./models";
 import { fetchAddUser } from "../../../../../services/api/fetchAddUser";
 import { useForm, Controller } from "react-hook-form";
-import { addUserSchema } from "../../../../../shared/schemas/validate-schema";
 import { ButtonsGroup } from "../../../../../shared/button-group/button-group";
+import { addUserSchema } from "./validation";
 import { CloseIcon } from "../../../../../assets/icons/close-icon";
 import { useUsersContext } from "../../../../../shared/hooks";
 
