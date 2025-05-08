@@ -11,7 +11,10 @@ export const addUserSchema = z.object({
     .trim(),
   AdminUser: z.boolean().optional(),
   BlockAccess: z.boolean(),
-  O365Email: z.string().email(),
+  O365Email: z
+    .string()
+    .trim()
+    .refine((val) => val === "" || z.string().email().safeParse(val).success, { message: "Must be a valid email or empty" }),
   UserID: z.number().optional(),
 });
 
@@ -19,7 +22,10 @@ export const editUserSchema = z.object({
   DisplayName: z.string().min(2).max(50).trim(),
   Email: z.string().email().trim(),
   BlockAccess: z.boolean(),
-  O365Email: z.string().email().optional(),
+  O365Email: z
+    .string()
+    .trim()
+    .refine((val) => val === "" || z.string().email().safeParse(val).success, { message: "Must be a valid email or empty" }),
 
   MFA_Mobile: z
     .string()

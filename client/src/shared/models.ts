@@ -7,7 +7,7 @@ export type ContactsProps = {
   FunctionalUser: number;
   AdminUser?: boolean;
   BlockAccess: boolean;
-  O365Email?: string;
+  O365Email: string;
   MFA_Mobile: string;
   ColourMode: string;
   HierarchyMaintenance: boolean;
