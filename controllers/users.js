@@ -9,60 +9,71 @@ exports.createUser = async (req, res) => {
   const isAdmin = AdminUser ? 1 : 0;
   const isBlocked = BlockAccess ? 1 : 0;
 
-  try {
-    await sql.connect(config);
+  // Default values
+  const isOSPAdmin = 0;
+  const functionalUser = 0;
+  const status = "Testing";
+  const colourMode = "L";
+  const hierarchyMaintenance = 0;
 
-    const emailCheck = await sql.query`
-    SELECT * FROM Users WHERE Email = ${Email}
-    `;
+  try {
+    const pool = req.app.locals.db;
+
+    // Check if email already exists
+    const emailCheck = await pool.request().input("Email", Email).query("SELECT * FROM Users WHERE Email = @Email");
 
     if (emailCheck.recordset.length > 0) {
       return res.status(409).json({ error: "Email already exists." });
     }
 
-    const usernameCheck = await sql.query`
-  SELECT * FROM Users WHERE DisplayName = ${DisplayName}
-  `;
+    // Check if username already exists
+    const usernameCheck = await pool.request().input("DisplayName", DisplayName).query("SELECT * FROM Users WHERE DisplayName = @DisplayName");
 
     if (usernameCheck.recordset.length > 0) {
       return res.status(409).json({ error: "Username already exists." });
     }
-    // Optional defaults
 
-    const isOSPAdmin = 0;
-    const functionalUser = 0;
-    const status = "Testing";
-    const colourMode = "L";
-    const hierarchyMaintenance = 0;
-
-    await sql.query`
-  INSERT INTO Users (
-    DisplayName,
-    Email,
-    MFA_Mobile,
-    AdminUser,
-    O365Email,
-    BlockAccess,
-    IsOSPAdmin,
-    Status,
-    FunctionalUser,
-    ColourMode,
-    HierarchyMaintenance
-  )
-  VALUES (
-    ${DisplayName},
-    ${Email},
-    ${MFA_Mobile},
-    ${isAdmin},
-    ${O365Email},
-    ${isBlocked},
-    ${isOSPAdmin},
-    ${status},
-    ${functionalUser},
-    ${colourMode},
-    ${hierarchyMaintenance}
-  )
-`;
+    // Insert new user
+    await pool
+      .request()
+      .input("DisplayName", DisplayName)
+      .input("Email", Email)
+      .input("MFA_Mobile", MFA_Mobile)
+      .input("AdminUser", isAdmin)
+      .input("O365Email", O365Email)
+      .input("BlockAccess", isBlocked)
+      .input("IsOSPAdmin", isOSPAdmin)
+      .input("Status", status)
+      .input("FunctionalUser", functionalUser)
+      .input("ColourMode", colourMode)
+      .input("HierarchyMaintenance", hierarchyMaintenance).query(`
+        INSERT INTO Users (
+          DisplayName,
+          Email,
+          MFA_Mobile,
+          AdminUser,
+          O365Email,
+          BlockAccess,
+          IsOSPAdmin,
+          Status,
+          FunctionalUser,
+          ColourMode,
+          HierarchyMaintenance
+        )
+        VALUES (
+          @DisplayName,
+          @Email,
+          @MFA_Mobile,
+          @AdminUser,
+          @O365Email,
+          @BlockAccess,
+          @IsOSPAdmin,
+          @Status,
+          @FunctionalUser,
+          @ColourMode,
+          @HierarchyMaintenance
+        )
+      `);
 
     res.status(201).send("User created successfully!");
   } catch (err) {
@@ -80,19 +91,27 @@ exports.editUser = async (req, res) => {
   const isBlocked = BlockAccess ? 1 : 0;
 
   try {
-    await sql.connect(config);
+    const pool = req.app.locals.db;
 
-    await sql.query`
+    await pool
+      .request()
+      .input("DisplayName", DisplayName)
+      .input("Email", Email)
+      .input("BlockAccess", isBlocked)
+      .input("MFA_Mobile", MFA_Mobile)
+      .input("O365Email", O365Email)
+      .input("AdminUser", isAdmin)
+      .input("UserID", id).query(`
       UPDATE Users
       SET
-        DisplayName = ${DisplayName},
-        Email = ${Email},
-        BlockAccess = ${isBlocked},
-        MFA_Mobile = ${MFA_Mobile},
-        O365Email = ${O365Email},
-        AdminUser = ${isAdmin}
-      WHERE UserID = ${id}
-    `;
+        DisplayName = @DisplayName,
+        Email = @Email,
+        BlockAccess = @BlockAccess,
+        MFA_Mobile = @MFA_Mobile,
+        O365Email = @O365Email,
+        AdminUser = @AdminUser
+      WHERE UserID = @UserID
+    `);
 
     res.status(200).send("User updated successfully!");
   } catch (error) {
@@ -102,10 +121,12 @@ exports.editUser = async (req, res) => {
 };
 
 // Controller to get all users
-exports.getUsers = async (_, res) => {
+exports.getUsers = async (req, res) => {
   try {
-    await sql.connect(config);
-    const result = await sql.query("SELECT * FROM Users");
+    const pool = req.app.locals.db;
+
+    const result = await pool.request().query("SELECT * FROM Users");
+
     res.json(result.recordset);
   } catch (err) {
     console.error("SQL error:", err);
@@ -118,12 +139,12 @@ exports.deleteUser = async (req, res) => {
   const { id } = req.params;
 
   try {
-    await sql.connect(config);
+    const pool = req.app.locals.db;
 
-    await sql.query`
-      DELETE FROM Users
-      WHERE UserID = ${id}
-    `;
+    await pool.request().input("UserID", id).query(`
+        DELETE FROM Users
+        WHERE UserID = @UserID
+      `);
 
     res.status(200).send(`User with ID ${id} deleted successfully.`);
   } catch (err) {
