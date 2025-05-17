@@ -21,7 +21,11 @@ export const ContactsHeader = ({ searchValue, handleSearch }: HeaderProps) => {
   };
 
   const renderList = () => {
-    return tableOptions.map((option) => <DropdownItem onClick={() => setOption(option.title)}>{option.title}</DropdownItem>);
+    return tableOptions.map((option) => (
+      <DropdownItem key={option.id} onClick={() => setOption(option.title)}>
+        {option.title}
+      </DropdownItem>
+    ));
   };
 
   return (
