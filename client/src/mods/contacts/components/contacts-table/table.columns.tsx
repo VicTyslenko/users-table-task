@@ -44,8 +44,7 @@ export const renderColumns = (): ColumnDef<ContactsProps>[] => [
 
   {
     header: "Edit",
-    accessorKey: "edit",
-
+    id: "edit",
     cell: (info) => {
       const { Status, FunctionalUser, ColourMode, HierarchyMaintenance, ...formValues } = info.row.original;
 
@@ -55,7 +54,7 @@ export const renderColumns = (): ColumnDef<ContactsProps>[] => [
 
   {
     header: "Delete user",
-    accessorKey: "delete",
+    id: "delete",
     cell: (info) => {
       const id = info.row.original.UserID;
 

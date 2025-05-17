@@ -1,8 +1,10 @@
 import * as S from "./styles";
 import { usePagination } from "./hooks";
+import { ArrowBackIcon } from "../../../../../assets/icons/arrow-back-icon";
+import { ArrowForwardIcon } from "../../../../../assets/icons/arrow-forward-icon";
 
 export const Pagination = ({ totalPages }: { totalPages: number }) => {
-  const { step, handleSetSearchParameters } = usePagination();
+  const { step, handleSetSearchParameters, handleBack, handleForward } = usePagination(totalPages);
 
   const renderPages = () => {
     return [...Array(totalPages)].map((_, index) => {
@@ -16,5 +18,16 @@ export const Pagination = ({ totalPages }: { totalPages: number }) => {
     });
   };
 
-  return <S.PaginationWrapp>{renderPages()}</S.PaginationWrapp>;
+  return (
+    <S.PaginationWrapp>
+      <S.PaginationAction onClick={handleBack}>
+        <ArrowBackIcon />
+      </S.PaginationAction>
+
+      {renderPages()}
+      <S.PaginationAction onClick={handleForward}>
+        <ArrowForwardIcon />
+      </S.PaginationAction>
+    </S.PaginationWrapp>
+  );
 };

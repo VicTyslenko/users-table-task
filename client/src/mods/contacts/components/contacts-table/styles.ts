@@ -5,12 +5,17 @@ export const TableWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  min-height: 550px;
   background-color: #fff;
+  /* min-height: 780px; */
+  min-height: 550px;
   border-radius: 16px;
   padding: 10px;
   background: #fff;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  /* @media screen and (max-height: 800px) {
+    min-height: 550px;
+  } */
 `;
 
 export const Table = styled.table`

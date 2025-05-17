@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-export const usePagination = () => {
+export const usePagination = (totalPages: number) => {
   const [searchParameters, setSearchParameters] = useSearchParams();
 
   const step = Number(searchParameters.get("step"));
@@ -12,5 +12,22 @@ export const usePagination = () => {
     });
   };
 
-  return { step, handleSetSearchParameters };
+  const handleBack = () => {
+    if (step <= 1) return;
+
+    setSearchParameters((searchParams) => {
+      searchParams.set("step", String(step - 1));
+
+      return searchParams;
+    });
+  };
+
+  const handleForward = () =>
+    setSearchParameters((searchParams) => {
+      if (step < totalPages) searchParams.set("step", String(step + 1));
+
+      return searchParams;
+    });
+
+  return { step, handleSetSearchParameters, handleBack, handleForward };
 };

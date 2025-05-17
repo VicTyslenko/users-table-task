@@ -8,7 +8,9 @@ import { Pagination } from "../mods/contacts/components/extensions/pagination/pa
 export const Contacts = () => {
   const { data, totalPages, refetch, handleSearch, searchContactValue } = useContacts();
 
-  console.log(data)
+console.log(data)
+  
+
   return (
     <UsersContext.Provider value={{ refetch }}>
       <S.Wrapper>

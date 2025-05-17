@@ -11,7 +11,7 @@ export const ToggleSwitch = styled.label<ToggleSwitchProps>`
   display: inline-block;
   position: relative;
 
-  .toggle-switch_checkbox {
+   .toggle-switch_checkbox {
     opacity: 0;
     width: 0;
     height: 0;
