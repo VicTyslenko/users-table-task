@@ -25,9 +25,9 @@ A full-stack application for managing users with features like:
 ```bash
 git clone https://github.com/VicTyslenko/users-table-task.git
 
-2. Install dependencies
+2. Install dependencies 
 Backend (root)
-npm install
+npm install (npm install --legacy-peer-deps) to resolve TS versions conflict
 
 Frontend
 cd client
