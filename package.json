@@ -8,10 +8,10 @@
     "dev": "nodemon index.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.98.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "mssql": "^11.0.1"
+    "express": "^5.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
