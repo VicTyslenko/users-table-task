@@ -1,7 +1,7 @@
 {
-  "name": "my-sql-api",
+  "name": "users-table-api",
   "version": "1.0.0",
-  "description": "Express API to connect React with SQL Server",
+  "description": "Express API connecting React frontend with MS SQL Server",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

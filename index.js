@@ -11,7 +11,7 @@ const appPool = new sql.ConnectionPool(config);
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
   })
 );
 
@@ -23,7 +23,8 @@ appPool
   .connect()
   .then((pool) => {
     app.locals.db = pool;
-    const server = app.listen(3001, () => {
+    const port = process.env.PORT || 3001;
+    const server = app.listen(port, () => {
       const host = server.address().address;
       const port = server.address().port;
       console.log(`Server is listening at http://${host}:${port}`);

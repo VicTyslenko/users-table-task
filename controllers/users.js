@@ -1,7 +1,5 @@
 const sql = require("mssql");
 
-const config = require("../config/config");
-
 // Controller to create a new user
 exports.createUser = async (req, res) => {
   const { DisplayName, Email, MFA_Mobile, AdminUser, O365Email, BlockAccess } = req.body;
@@ -93,7 +91,7 @@ exports.editUser = async (req, res) => {
   try {
     const pool = req.app.locals.db;
 
-    await pool
+    const result = await pool
       .request()
       .input("DisplayName", DisplayName)
       .input("Email", Email)
@@ -112,6 +110,10 @@ exports.editUser = async (req, res) => {
         AdminUser = @AdminUser
       WHERE UserID = @UserID
     `);
+
+    if (result.rowsAffected[0] === 0) {
+      return res.status(404).json({ error: "User not found." });
+    }
 
     res.status(200).send("User updated successfully!");
   } catch (error) {
@@ -141,14 +143,18 @@ exports.deleteUser = async (req, res) => {
   try {
     const pool = req.app.locals.db;
 
-    await pool.request().input("UserID", id).query(`
+    const result = await pool.request().input("UserID", id).query(`
         DELETE FROM Users
         WHERE UserID = @UserID
       `);
 
+    if (result.rowsAffected[0] === 0) {
+      return res.status(404).json({ error: "User not found." });
+    }
+
     res.status(200).send(`User with ID ${id} deleted successfully.`);
   } catch (err) {
-    console.error(" Delete user error:", err);
+    console.error("Delete user error:", err);
     res.status(500).send("Failed to delete user.");
   }
 };
