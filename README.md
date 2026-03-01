@@ -1,1 +1,136 @@
-IyBVc2VyIE1hbmFnZW1lbnQgRGFzaGJvYXJkCgpBIGZ1bGwtc3RhY2sgd2ViIGFwcGxpY2F0aW9uIGZvciBtYW5hZ2luZyB1c2VycyBzdG9yZWQgaW4gYW4gTVMgU1FMIFNlcnZlciBkYXRhYmFzZS4gRmVhdHVyZXMgaW5jbHVkZSBsaXN0aW5nLCBzZWFyY2hpbmcsIHBhZ2luYXRpbmcsIGFkZGluZywgZWRpdGluZywgYW5kIGRlbGV0aW5nIHVzZXJzLCB3aXRoIHN1cHBvcnQgZm9yIHRvZ2dsaW5nIGFkbWluIHN0YXR1cyBhbmQgYmxvY2tpbmcgYWNjZXNzLgoKLS0tCgojIyBUZWNoIFN0YWNrCgp8IExheWVyIHwgVGVjaG5vbG9neSB8CnwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLXwKfCBGcm9udGVuZCB8IFJlYWN0IDE5LCBUeXBlU2NyaXB0LCBSZ2FjdCBIb29rIEZvcm0sIFpvZCwgU3R5bGVkIENvbXBvbmVudHMgfAp8IFRhYmxlICAgIHwgVGFuU3RhY2sgUmVhY3QgVGFibGUgdjggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CnwgQmFja2VuZCAgfCBOb2RlLmpzLCBFeHByZXNzIDUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCBEYXRhYmFzZSB8IE1pY3Jvc29mdCBTUUwgU2VydmVyIChtc3NxbCkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CnwgTm90aWZ5ICAgfCByZWFjdC1ob3QtdG9hc3QgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKCi0tLQoKIyMgUHJlcmVxdWlzaXRlcwoKLSBOb2RlLmpzID49IDE4Ci0gQWNjZXNzIHRvIGFuIE1TIFNRTCBTZXJ2ZXIgaW5zdGFuY2Ugd2l0aCBhIGBVc2Vyc2AgdGFibGUKCiMjIyBFeHBlY3RlZCBEYXRhYmFzZSBTY2hlbWEKClRoZSBhcHBsaWNhdGlvbiBleHBlY3RzIGEgYFVzZXJzYCB0YWJsZSB3aXRoIGF0IGxlYXN0IHRoZSBmb2xsb3dpbmcgY29sdW1uczoKCmBgYHNxbApDUkVBVEUgVEFCTEUgVXNlcnMgKAogIFVzZXJJRCAgICAgICAgICAgICBJTlQgSURFTlRJVFkgUFJJTUFSWSBLRVksCiAgRGlzcGxheU5hbWUgICAgICAgIE5WQVJDSEFSKDI1NiksCiAgRW1haWwgICAgICAgICAgICAgIE5WQVJDSEFSKDI1NiksCiAgTUZBX01vYmlsZSAgICAgICAgIE5WQVJDSEFSKDUwKSwKICBBZG1pblVzZXIgICAgICAgICBCSVQsCiAgTzM2NUVtYWlsICAgICAgICAgIE5WQVJDSEFSKDI1NiksCiAgQmxvY2tBY2Nlc3MgICAgICAgIEJJVCwKICBJc09TUEFkbWluICAgICAgICAgQklULAogIFN0YXR1cyAgICAgICAgICAgICBOVkFSQ0hBUig1MCksCiAgRnVuY3Rpb25hbFVzZXIgICAgIEJJVCwKICBDb2xvdXJNb2RlICAgICAgICAgQ0hBUigxKSwKICBIaWVyYXJjaHlNYWludGVuYW5jZSBCSVQKKTsKYGBgCgotLS0KCiMjIEdldHRpbmcgU3RhcnRlZAoKIyMjIDEuIENsb25lIHRoZSByZXBvc2l0b3J5CgpgYGBiYXNoCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vVmljVHlzbGVua28vdXNlcnMtdGFibGUtdGFzay5naXQKY2QgdXNlcnMtdGFibGUtdGFzawpgYGAKCiMjIyAyLiBDb25maWd1cmUgZW52aXJvbm1lbnQgdmFyaWFibGVzCgpDcmVhdGUgYSBgLmVudmAgZmlsZSBpbiB0aGUgcm9vdCBkaXJlY3Rvcnk6CgpgYGBiYXNoCmNwIC5lbnYuZXhhbXBsZSAuZW52CmBgYAoKVGhlbiBmaWxsIGluIHlvdXIgdmFsdWVzOgoKYGBgZW52CkRCX1VTRVI9eW91cl9kYl91c2VybmFtZQpEQl9QQVNTV09SRD15b3VyX2RiX3Bhc3N3b3JkCkRCX1NFUlZFUj15b3VyLXNlcnZlci5kYXRhYmFzZS53aW5kb3dzLm5ldApEQl9EQVRBQkFTRT15b3VyX2RhdGFiYXNlX25hbWUKYGBgCgojIyMgMy4gSW5zdGFsbCBkZXBlbmRlbmNpZXMKCioqQmFja2VuZCoqIChmcm9tIHJvb3QpOgoKYGBgYmFzaApucG0gaW5zdGFsbApgYGAKCioqRnJvbnRlbmQqKjoKCmBgYGJhc2gKY2QgY2xpZW50CiMgSWYgeW91IGhpdCBwZWVyIGRlcGVuZGVuY3kgY29uZmxpY3RzIChUUyB2ZXJzaW9uKToKbnBtIGluc3RhbGwgLS1sZWdhY3ktcGVlci1kZXBzCmBgYAoKIyMjIDQuIFN0YXJ0IHRoZSBhcHAKCioqQmFja2VuZCoqIChmcm9tIHJvb3QpOgoKYGBgYmFzaApucG0gc3RhcnQgICAgICAgICMgcHJvZHVjdGlvbgpucG0gcnVuIGRldiAgICAgICAjIGRldmVsb3BtZW50IHdpdGggbm9kZW1vbgpgYGAKCioqRnJvbnRlbmQqKiAoZnJvbSBgY2xpZW50L2ApOgoKYGBgYmFzaApucG0gc3RhcnQKYGBgCgpUaGUgZnJvbnRlbmQgcnVucyBvbiBgaHR0cDovL2xvY2FsaG9zdDozMDAwYCBhbmQgdGhlIEFQSSBvbiBgaHR0cDovL2xvY2FsaG9zdDozMDAxYC4KCi0tLQoKIyMgQVBJIEVuZHBvaW50cwoKfCBNZXRob2QgfCBFbmRwb2ludCAgICAgICAgICAgICAgICAgICB8IERlc2NyaXB0aW9uICAgICAgfAp8LS0tLS0tLS18LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS18CnwgR0VUICAgIHwgYC9hcGkvdXNlcnNgICAgICAgICAgICAgICAgfCBGZXRjaCBhbGwgdXNlcnMgIHwKfCBQT1NUICAgfCBgL2FwaS91c2Vycy9jcmVhdGUtdXNlcmAgICB8IENyZWF0ZSBhIG5ldyB1c2VyfAp8IFBVVCAgICB8IGAvYXBpL3VzZXJzL2VkaXQtdXNlci86aWRgIHwgVXBkYXRlIGEgdXNlciAgICB8CnwgREVMRVRFIHwgYC9hcGkvdXNlcnMvOmlkYCAgICAgICAgICAgfCBEZWxldGUgYSB1c2VyICAgIHwKCi0tLQoKIyMgUHJvamVjdCBTdHJ1Y3R1cmUKCmBgYAp1c2Vycy10YWJsZS10YXNrLwrilJzilIDilIAgY29uZmlnLyAgICAgICAgICAgICAgIyBEQiBjb25uZWN0aW9uIGNvbmZpZwrilJzilIDilIAgY29udHJvbGxlcnMvICAgICAgICAjIEV4cHJlc3Mgcm91dGUgaGFuZGxlcnMKKiAgIHJvdXRlcy8gICAgICAgICAgICAgICMgQVBJIHJvdXRlcwrilJzilIDilIAgaW5kZXguanMgICAgICAgICAgICAjIEV4cHJlc3MgZW50cnkgcG9pbnQKJiAgIGNsaWVudC8gICAgICAgICAgICAgICAjIFJlYWN0IGZyb250ZW5kCiAgICDilJzilIDilIAgc3JjLwogICAgICAgIOKUnOKUgOKUgCBtb2RzLyAgICAgICAgICAgICAjIEZlYXR1cmUgbW9kdWxlcyAodGFibGUsIGZvcm1zLCBldGMuKQogICAgICAgIOKUnOKUgOKUgCBwYWdlcy8gICAgICAgICAgICAjIFBhZ2UtbGV2ZWwgY29tcG9uZW50cyAmIGhvb2tzCiAgICAgICAgKiAgIHNlcnZpY2VzL2FwaS8gICAgICMgQXhpb3MgaW5zdGFuY2UgJiBBUEkgY2FsbHMKICAgICAgICDilJQilIDilIAgc2hhcmVkLyAgICAgICAgICAgICMgUmV1c2FibGUgY29tcG9uZW50cyAmIG1vZGVscwpgYGAK
+# User Management Dashboard
+
+A full-stack web application for managing users stored in an MS SQL Server database. Features include listing, searching, paginating, adding, editing, and deleting users, with support for toggling admin status and blocking access.
+
+---
+
+## Tech Stack
+
+| Layer    | Technology                                                    |
+|----------|---------------------------------------------------------------|
+| Frontend | React 19, TypeScript, React Hook Form, Zod, Styled Components |
+| Table    | TanStack React Table v8                                       |
+| Backend  | Node.js, Express 5                                            |
+| Database | Microsoft SQL Server (mssql)                                  |
+| Notify   | react-hot-toast                                               |
+
+---
+
+## Prerequisites
+
+- Node.js >= 18
+- Access to an MS SQL Server instance with a `Users` table
+
+### Expected Database Schema
+
+The application expects a `Users` table with at least the following columns:
+
+```sql
+CREATE TABLE Users (
+  UserID                INT IDENTITY PRIMARY KEY,
+  DisplayName           NVARCHAR(256),
+  Email                 NVARCHAR(256),
+  MFA_Mobile            NVARCHAR(50),
+  AdminUser             BIT,
+  O365Email             NVARCHAR(256),
+  BlockAccess           BIT,
+  IsOSPAdmin            BIT,
+  Status                NVARCHAR(50),
+  FunctionalUser        BIT,
+  ColourMode            CHAR(1),
+  HierarchyMaintenance  BIT
+);
+```
+
+---
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/VicTyslenko/users-table-task.git
+cd users-table-task
+```
+
+### 2. Configure environment variables
+
+Create a `.env` file in the root directory:
+
+```bash
+cp .env.example .env
+```
+
+Then fill in your values:
+
+```env
+DB_USER=your_db_username
+DB_PASSWORD=your_db_password
+DB_SERVER=your-server.database.windows.net
+DB_DATABASE=your_database_name
+PORT=3001
+CORS_ORIGIN=http://localhost:3000
+REACT_APP_API_URL=http://localhost:3001/api
+```
+
+### 3. Install dependencies
+
+**Backend** (from root):
+
+```bash
+npm install
+```
+
+**Frontend**:
+
+```bash
+cd client
+# If you hit peer dependency conflicts (TS version):
+npm install --legacy-peer-deps
+```
+
+### 4. Start the app
+
+**Backend** (from root):
+
+```bash
+npm start        # production
+npm run dev      # development with nodemon
+```
+
+**Frontend** (from `client/`):
+
+```bash
+npm start
+```
+
+The frontend runs on `http://localhost:3000` and the API on `http://localhost:3001`.
+
+---
+
+## API Endpoints
+
+| Method | Endpoint                    | Description       |
+|--------|-----------------------------|-------------------|
+| GET    | `/api/users`                | Fetch all users   |
+| POST   | `/api/users/create-user`    | Create a new user |
+| PUT    | `/api/users/edit-user/:id`  | Update a user     |
+| DELETE | `/api/users/:id`            | Delete a user     |
+
+---
+
+## Project Structure
+
+```
+users-table-task/
+├── config/          # DB connection config
+├── controllers/     # Express route handlers
+├── routes/          # API routes
+├── index.js         # Express entry point
+└── client/          # React frontend
+    └── src/
+        ├── mods/    # Feature modules (table, forms, etc.)
+        ├── pages/   # Page-level components & hooks
+        ├── services/api/  # Axios instance & API calls
+        └── shared/  # Reusable components & models
+```
